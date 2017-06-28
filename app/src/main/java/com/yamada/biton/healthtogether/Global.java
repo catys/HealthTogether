@@ -7,5 +7,18 @@ import android.app.Application;
  */
 
 public class Global extends Application {
-    public int flag = 0;
+    private int flag;
+
+    @Override
+    public void onCreate(){
+        super.onCreate();
+    }
+
+    public void setFlag(int i){
+        flag = i;
+    }
+
+    public int getFlag(){
+        return flag;
+    }
 }

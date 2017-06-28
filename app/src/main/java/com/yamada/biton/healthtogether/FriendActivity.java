@@ -17,12 +17,12 @@ import com.yamada.biton.healthtogether.AsyncTasksPackage.ConnectHttpFriend;
 public class FriendActivity  extends AppCompatActivity {
     //ユーザーのメールアドレスを設定
     String mymail = "testmail1",friendmail;
-    Global global;
+    Global global = (Global)getApplication();
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend);
-        //global = (Global)getApplication();
+        global = (Global)getApplication();
 
         TextView textparam = (TextView)findViewById(R.id.friendText);
         ImageButton button2 = (ImageButton)findViewById(R.id.friendGetButton);
@@ -33,7 +33,6 @@ public class FriendActivity  extends AppCompatActivity {
     }
 
     public void FriendSearch(View v){
-
         //EditText内に入力された値を取得
         EditText edit = (EditText)findViewById(R.id.mailText);
         SpannableStringBuilder sp = (SpannableStringBuilder)edit.getText();
@@ -42,6 +41,21 @@ public class FriendActivity  extends AppCompatActivity {
         //phpへとデータを送信
         ConnectHttpFriend postdata = new ConnectHttpFriend();
         postdata.FriendSelect(this,mymail,friendmail);
+    }
 
+    public void FriendAdd(View v){
+        //Global変数のflagを確認し、友達かどうか判定
+        int flag = global.getFlag();
+        if(flag == 0){
+            //Insert
+            ConnectHttpFriend postdata = new ConnectHttpFriend();
+            postdata.FriendAdd(this,mymail,friendmail);
+            global.setFlag(1);
+        }else{
+            //Delete
+            ConnectHttpFriend postdata = new ConnectHttpFriend();
+            postdata.FriendDelete(this,mymail,friendmail);
+            global.setFlag(0);
+        }
     }
 }
