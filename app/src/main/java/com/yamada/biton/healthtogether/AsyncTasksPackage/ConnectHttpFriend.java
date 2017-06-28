@@ -28,8 +28,8 @@ import static com.yamada.biton.healthtogether.R.drawable.release_button;
  * Created by 優太 on 2017/06/28.
  */
 
-public class ConnectHttp extends Activity{
-    private static final String TAG = ConnectHttp.class.getSimpleName();
+public class ConnectHttpFriend extends Activity{
+    private static final String TAG = ConnectHttpFriend.class.getSimpleName();
     private AsyncTask<Uri, Void, String> mTask;
     private Activity mActivity;
 

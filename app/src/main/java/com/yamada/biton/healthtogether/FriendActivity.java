@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.yamada.biton.healthtogether.AsyncTasksPackage.ConnectHttp;
+import com.yamada.biton.healthtogether.AsyncTasksPackage.ConnectHttpFriend;
 
 /**
  * Created by 優太 on 2017/06/28.
@@ -40,7 +40,7 @@ public class FriendActivity  extends AppCompatActivity {
         friendmail = sp.toString();
 
         //phpへとデータを送信
-        ConnectHttp postdata = new ConnectHttp();
+        ConnectHttpFriend postdata = new ConnectHttpFriend();
         postdata.FriendSelect(this,mymail,friendmail);
 
     }
