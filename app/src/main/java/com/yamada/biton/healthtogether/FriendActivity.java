@@ -30,8 +30,13 @@ public class FriendActivity  extends AppCompatActivity {
         //初期値を非表示
         textparam.setVisibility(View.GONE);
         button2.setVisibility(View.GONE);
+
+        //フレンド全件検索
+        ConnectHttpFriend postdata = new ConnectHttpFriend();
+        postdata.FriendDisplay(this,mymail);
     }
 
+    //フレンド検索
     public void FriendSearch(View v){
         //EditText内に入力された値を取得
         EditText edit = (EditText)findViewById(R.id.mailText);
@@ -43,19 +48,33 @@ public class FriendActivity  extends AppCompatActivity {
         postdata.FriendSelect(this,mymail,friendmail);
     }
 
+    //フレンドの追加、解除
     public void FriendAdd(View v){
         //Global変数のflagを確認し、友達かどうか判定
         int flag = global.getFlag();
         if(flag == 0){
-            //Insert
+            //追加
             ConnectHttpFriend postdata = new ConnectHttpFriend();
             postdata.FriendAdd(this,mymail,friendmail);
             global.setFlag(1);
         }else{
-            //Delete
+            //削除
             ConnectHttpFriend postdata = new ConnectHttpFriend();
             postdata.FriendDelete(this,mymail,friendmail);
             global.setFlag(0);
         }
     }
+
+    //フレンド情報共有設定
+    public void FriendInfoShare(View v){
+        ConnectHttpFriend postdata = new ConnectHttpFriend();
+
+    }
+
+    //フレンドスケジュール共有設定
+    public void FriendScheduleShare(View v){
+
+    }
+
+
 }
