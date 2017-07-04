@@ -4,11 +4,16 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableStringBuilder;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.yamada.biton.healthtogether.AsyncTasksPackage.ConnectHttpFriend;
+
+import java.util.ArrayList;
 
 /**
  * Created by 優太 on 2017/06/28.
@@ -24,16 +29,23 @@ public class FriendActivity  extends AppCompatActivity {
         setContentView(R.layout.activity_friend);
         global = (Global)getApplication();
 
+        ListView listView = (ListView)findViewById(R.id.listView);
+
+        ArrayList<FriendInfo> list = new ArrayList<>();
+        FriendAdapter adapter = new FriendAdapter(FriendActivity.this);
+        adapter.setFriendList(list);
+        listView.setAdapter(adapter);
+
+        //フレンド全件検索
+        ConnectHttpFriend postdata = new ConnectHttpFriend();
+        postdata.FriendDisplay(this,mymail,listView,list,adapter);
+
         TextView textparam = (TextView)findViewById(R.id.friendText);
         ImageButton button2 = (ImageButton)findViewById(R.id.friendGetButton);
 
         //初期値を非表示
         textparam.setVisibility(View.GONE);
         button2.setVisibility(View.GONE);
-
-        //フレンド全件検索
-        ConnectHttpFriend postdata = new ConnectHttpFriend();
-        postdata.FriendDisplay(this,mymail);
     }
 
     //フレンド検索
@@ -66,7 +78,7 @@ public class FriendActivity  extends AppCompatActivity {
     }
 
     //フレンド情報共有設定
-    public void FriendInfoShare(View v){
+    public void FriendInfoShare(View v,String mymail,String fmail,String flag){
         ConnectHttpFriend postdata = new ConnectHttpFriend();
 
     }

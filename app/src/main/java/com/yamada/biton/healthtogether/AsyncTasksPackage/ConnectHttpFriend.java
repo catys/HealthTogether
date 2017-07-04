@@ -6,8 +6,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -21,7 +23,12 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.yamada.biton.healthtogether.FriendActivity;
+import com.yamada.biton.healthtogether.FriendAdapter;
+import com.yamada.biton.healthtogether.FriendInfo;
 import com.yamada.biton.healthtogether.Global;
 import com.yamada.biton.healthtogether.R;
 import static com.yamada.biton.healthtogether.R.drawable.entry_button;
@@ -38,6 +45,10 @@ public class ConnectHttpFriend extends Activity{
     private Activity mActivity;
     Global global = (Global)getApplication();
 
+    private ListView fLV;
+    private ArrayList<FriendInfo> fFI;
+    private FriendAdapter fFA;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,10 +63,12 @@ public class ConnectHttpFriend extends Activity{
         });
     }
 
-    public void FriendDisplay(Activity activity, String mymail) {
+    public void FriendDisplay(Activity activity,String mymail,ListView LV,ArrayList<FriendInfo> FI,FriendAdapter FA) {
         mActivity = activity;
+        fLV = LV;
+        fFI = FI;
+        fFA = FA;
 
-        // URLを、扱いやすいUri型で組む
         Uri baseUri = Uri
                 .parse("http://54.92.74.113/sue/FriendDisplay.php");
 
@@ -148,35 +161,33 @@ public class ConnectHttpFriend extends Activity{
                 @Override
                 protected void onPostExecute(String result) {
                     try {
+                        System.out.println("返ってきてる");
                         JSONObject json = new JSONObject(result);
                         JSONArray datas = json.getJSONArray("data");
-                        System.out.println("返ってきてる");
-                        System.out.println(datas.length());
 
-                        //LinearLayout linearLayout = (LinearLayout)mActivity.findViewById(R.id.FreindLenear);
-                        //LinearLayout linearLayout = new LinearLayout(mActivity);
-                        //linearLayout.setOrientation(LinearLayout.VERTICAL);
-                        //setContentView(linearLayout);
-                        //TextView text7 = new TextView(activity);
-                        //ImageButton button7 = new ImageButton(activity);
-                        //ImageButton button8 = new ImageButton(activity);
-
-                        for (int i = 0; i < datas.length(); i++) {
-                            JSONObject item = datas.getJSONObject(0);
+                        for (int i = 0; i <= datas.length(); i++) {
+                            JSONObject item = datas.getJSONObject(i);
 
                             // タイトルを取得する場合
                             String fmail = item.getString("fmail");
                             String allreleaseflag = item.getString("allreleaseflag");
                             String scheduleflag = item.getString("scheduleflag");
                             String profile = item.getString("profileURL");
-                            System.out.println("返ってきてる");
-                            System.out.println(fmail);
-                            System.out.println(allreleaseflag);
+
+                            System.out.println("いい調子:" + fmail);
+
+                            FriendInfo fi = new FriendInfo();
+                            fi.setFriendmail(fmail);
+                            fi.setMymail("nandeyanen");
+
+                            fFI.add(fi);
+                            fFA.notifyDataSetChanged();
 /*
+
                             //profileの画像を取得して設定//後で
 
                             //確認のためにfriend-mailを設定
-
+                            TextView text7 = new TextView(mActivity);
                             text7.setText(fmail);
                             text7.setLayoutParams(new LinearLayout.LayoutParams(
                                     LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -184,25 +195,25 @@ public class ConnectHttpFriend extends Activity{
                             linearLayout.addView(text7);
 
                             //情報共有ボタンを設定
-
+                            ImageButton button7 = new ImageButton(mActivity);
                             if(allreleaseflag == "1"){
                                 button7.setImageResource(release_button);
                             }else{
                                 button7.setImageResource(share_button);
                             }
                             button7.setLayoutParams(new LinearLayout.LayoutParams(
-                                   100,60));
+                                   150,100));
                             linearLayout.addView(button7);
 
                             //スケジュール共有ボタンを設定
-
+                            ImageButton button8 = new ImageButton(mActivity);
                             if(scheduleflag == "1"){
                                 button8.setImageResource(release_button);
                             }else{
                                 button8.setImageResource(share_button);
                             }
                             button8.setLayoutParams(new LinearLayout.LayoutParams(
-                                    100,60));
+                                    150,100));
                             linearLayout.addView(button8);
 */
                         }
@@ -626,128 +637,4 @@ public class ConnectHttpFriend extends Activity{
             // 現在通信のタスクが実行中。重複して実行されないように制御。
         }
     }
-
-    public void FriendInfoUpdata(Activity activity,String mymail,String friendmail) {
-        mActivity = activity;
-
-        // URLを、扱いやすいUri型で組む
-        Uri baseUri = Uri
-                .parse("http://54.92.74.113/sue/FriendInfoUpdata.php");
-
-        // パラメータの付与
-        Uri uri = baseUri.buildUpon()
-                .appendQueryParameter("mymail",mymail)
-                .appendQueryParameter("friendmail",friendmail)
-                .build();
-
-        if (mTask == null) {
-            mTask = new AsyncTask<Uri, Void, String>() {
-                /**
-                 * 通信において発生したエラー
-                 */
-                private Throwable mError = null;
-
-                @Override
-                protected String doInBackground(Uri... params) {
-                    Uri uri = params[0];
-                    sendText("\n通信開始\n");
-
-                    String result = request(uri);
-
-                    return result;
-                }
-
-                private String request(Uri uri ) {
-                    java.net.HttpURLConnection http = null;
-                    InputStream is = null;
-                    String result = null;
-                    try {
-                        // URLにHTTP接続
-                        URL url = new URL(uri.toString());
-                        http = (java.net.HttpURLConnection) url.openConnection();
-
-                        http.setConnectTimeout(3000);//接続タイムアウトを設定する。
-                        http.setReadTimeout(3000);//レスポンスデータ読み取りタイムアウトを設定する。
-
-                        http.setRequestMethod("POST");
-                        http.setDoOutput(true);// POSTによるデータ送信を可能
-                        http.setRequestProperty("User-Agent", "@IT java-tips URLConnection");// ヘッダを設定
-                        http.setRequestProperty("Accept-Language", "ja");// ヘッダを設定
-
-                        http.setDoInput(true);//リクエストのボディ送信を許可する
-                        http.setDoOutput(true);//レスポンスのボディ受信を許可する
-
-                        OutputStream os = http.getOutputStream();//POST用のOutputStreamを取得
-
-                        String postStr = "name=";//POSTするデータ
-                        PrintStream ps = new PrintStream(os);
-                        ps.print(postStr);//データをPOSTする
-                        ps.close();
-                        http.connect();
-                        is = http.getInputStream();
-
-                        result = toString(is);
-                        sendText(result);
-                    } catch (MalformedURLException e) {
-                        Log.e(TAG, "通信失敗", e);
-                        sendText(e.toString());
-                    } catch (IOException e) {
-                        Log.e(TAG, "通信失敗", e);
-                        sendText(e.toString());
-                    } finally {
-                        if (http != null) {
-                            http.disconnect();
-                        }
-                        try {
-                            if (is != null) {
-                                is.close();
-                            }
-                        } catch (IOException e) {
-                            Log.e(TAG, "ストリームのクローズ失敗", e);
-                        }
-                    }
-                    return result;
-                }
-
-                private String toString(InputStream is) throws IOException {
-                    BufferedReader reader = new BufferedReader(
-                            new InputStreamReader(is, "UTF-8"));
-                    StringBuilder sb = new StringBuilder();
-                    char[] b = new char[1024];
-                    int line;
-                    while (0 <= (line = reader.read(b))) {
-                        sb.append(b, 0, line);
-                    }
-                    return sb.toString();
-                }
-
-                @Override
-                protected void onPostExecute(String result) {
-                    try {
-                        ImageButton button2 = (ImageButton)mActivity.findViewById(R.id.friendGetButton);
-                        button2.setImageResource(entry_button);
-
-                        mTask = null;
-                    } catch (Exception e) {
-                    }
-
-                }
-
-                @Override
-                protected void onCancelled() {
-                    onCancelled(null);
-                }
-
-                @Override
-                protected void onCancelled(String result) {
-                    sendText("\nonCancelled(String result), result=" + result);
-
-                    mTask = null;
-                }
-            }.execute(uri);
-        } else {
-            // 現在通信のタスクが実行中。重複して実行されないように制御。
-        }
-    }
-
 }
