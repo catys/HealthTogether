@@ -1,13 +1,21 @@
 package com.yamada.biton.healthtogether;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import static com.yamada.biton.healthtogether.R.drawable.entry_button;
+import static com.yamada.biton.healthtogether.R.drawable.release_button;
+import static com.yamada.biton.healthtogether.R.drawable.share_button;
 
 /**
  * Created by 優太 on 2017/07/03.
@@ -46,8 +54,29 @@ public class FriendAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = layoutInflater.inflate(R.layout.friendrow,parent,false);
 
+        //文字を設定
         ((TextView) convertView.findViewById(R.id.mymail)).setText(friendList.get(position).getMymail());
         ((TextView) convertView.findViewById(R.id.friendmail)).setText(friendList.get(position).getFriendmail());
+
+        //tagを設定
+        ((ImageButton)convertView.findViewById(R.id.info_Button)).setTag(friendList.get(position).getFriendmail());
+        ((ImageButton)convertView.findViewById(R.id.schedule_Button)).setTag(friendList.get(position).getFriendmail());
+
+        //情報共有
+        String hantei = friendList.get(position).getAllreleaseflag();
+        if(hantei.equals("1")){
+            ((ImageButton) convertView.findViewById(R.id.info_Button)).setImageResource(release_button);
+        }else{
+            ((ImageButton) convertView.findViewById(R.id.info_Button)).setImageResource(share_button);
+        }
+
+        //スケジュール公開
+        String hantei2 = friendList.get(position).getScheduleflag();
+        if(hantei2.equals("1")){
+            ((ImageButton) convertView.findViewById(R.id.schedule_Button)).setImageResource(release_button);
+        }else{
+            ((ImageButton) convertView.findViewById(R.id.schedule_Button)).setImageResource(share_button);
+        }
 
         return convertView;
     }

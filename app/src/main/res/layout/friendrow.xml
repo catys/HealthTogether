@@ -23,6 +23,18 @@
         android:layout_below="@+id/name"
         android:layout_alignStart="@+id/name" />
 
+    <ImageButton
+        android:id="@+id/info_Button"
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
+        android:onClick="FriendInfoShare"
+        />
 
+    <ImageButton
+        android:id="@+id/schedule_Button"
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
+        android:onClick="FriendScheduleShare"
+        />
 
 </LinearLayout>
