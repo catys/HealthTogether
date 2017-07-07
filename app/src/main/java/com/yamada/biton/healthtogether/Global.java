@@ -3,7 +3,6 @@ package com.yamada.biton.healthtogether;
 import android.app.Application;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -11,14 +10,13 @@ import java.util.List;
  */
 
 public class Global extends Application {
+    private int flag;
+    private List<String> friendinfo;
+
     @Override
     public void onCreate(){
         super.onCreate();
     }
-
-    //フレンド関係/////////////////////////////////////
-    private int flag;
-    private List<String> friendinfo;
 
     public void setFlag(int i){
         flag = i;
@@ -28,6 +26,6 @@ public class Global extends Application {
         return flag;
     }
 
-    ////////////////////////////////////////////////////
+
 
 }
