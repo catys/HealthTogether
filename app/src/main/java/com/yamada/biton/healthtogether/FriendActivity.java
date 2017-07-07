@@ -1,5 +1,7 @@
 package com.yamada.biton.healthtogether;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableStringBuilder;
@@ -10,19 +12,22 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yamada.biton.healthtogether.AsyncTasksPackage.ConnectHttpFriend;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Created by 優太 on 2017/06/28.
  */
 
-public class FriendActivity  extends AppCompatActivity {
+public class FriendActivity  extends AppCompatActivity  {
     //ユーザーのメールアドレスを設定
     String mymail = "testmail1",friendmail;
     Global global = (Global)getApplication();
+    Activity fActivity = this;
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -78,15 +83,17 @@ public class FriendActivity  extends AppCompatActivity {
     }
 
     //フレンド情報共有設定
-    public void FriendInfoShare(View v,String mymail,String fmail,String flag){
+    public void FriendInfoShare(View v){
         ConnectHttpFriend postdata = new ConnectHttpFriend();
-
+        postdata.FriendReleaseUpdate(this,mymail,(String)((ImageButton)v).getTag(),v);
     }
 
     //フレンドスケジュール共有設定
     public void FriendScheduleShare(View v){
-
+        ConnectHttpFriend postdata = new ConnectHttpFriend();
+        postdata.FriendScheduleUpdate(this,mymail,(String)((ImageButton)v).getTag(),v);
     }
+
 
 
 }
