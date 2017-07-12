@@ -96,7 +96,7 @@ public class ScheduleActivity extends AppCompatActivity {
             day = day+i;
             if(lastDayOfMonth == day){
                 dflag = i;
-            }else if(10 == day){
+            }else if((10 == day) && (i != 0)){
                 carryflag = i;
             }
         }
@@ -107,7 +107,7 @@ public class ScheduleActivity extends AppCompatActivity {
         int month = Global.getMonth();
         if(month < 10){
             zflag = 1;
-            if(month == 9){
+            if((month == 9) && (dflag != 0)){
                 crflag = 1;
             }
         }else if((dflag != 0) && (month == 12)){
@@ -127,39 +127,39 @@ public class ScheduleActivity extends AppCompatActivity {
             switch (carryflag) {
                 case 1:
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-12",String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-13",String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-14",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-15",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-16",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
-                    break;
-                case 2:
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-12",String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-13",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-14",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-15",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
                     break;
-                case 3:
+                case 2:
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-12",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-13",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-14",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 3:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-12",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-13",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
                     break;
                 case 4:
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3),String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-12",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-13",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-12",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
                     break;
                 case 5:
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
@@ -167,8 +167,8 @@ public class ScheduleActivity extends AppCompatActivity {
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3),String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 4),String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-12",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
                     break;
                 case 6:
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
@@ -177,46 +177,46 @@ public class ScheduleActivity extends AppCompatActivity {
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3),String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 4),String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 5),String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
                     break;
             }
         }else if((carryflag != 0) && (zflag == 1)){
             switch (carryflag) {
                 case 1:
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-12",String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-13",String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-14",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-15",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-16",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
-                    break;
-                case 2:
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-12",String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-13",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-14",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-15",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
                     break;
-                case 3:
+                case 2:
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-12",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-13",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-14",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 3:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-12",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-13",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
                     break;
                 case 4:
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3),String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-12",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-13",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-12",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
                     break;
                 case 5:
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
@@ -224,8 +224,8 @@ public class ScheduleActivity extends AppCompatActivity {
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3),String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 4),String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-12",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
                     break;
                 case 6:
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
@@ -234,7 +234,7 @@ public class ScheduleActivity extends AppCompatActivity {
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3),String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 4),String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
                     Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 5),String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
-                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
                     break;
             }
         }
@@ -472,7 +472,29 @@ public class ScheduleActivity extends AppCompatActivity {
         post.ScheduleInsert(this,mymail);
     }
 
-    public void DayChange(View v){
+    public void DayNext(View v){
+        CheckBox cb1 = (CheckBox) findViewById(R.id.checkBox1);
+        CheckBox cb11 = (CheckBox) findViewById(R.id.checkBox11);
+        CheckBox cb111 = (CheckBox) findViewById(R.id.checkBox111);
+        CheckBox cb2 = (CheckBox) findViewById(R.id.checkBox2);
+        CheckBox cb22 = (CheckBox) findViewById(R.id.checkBox22);
+        CheckBox cb222 = (CheckBox) findViewById(R.id.checkBox222);
+        CheckBox cb3 = (CheckBox) findViewById(R.id.checkBox3);
+        CheckBox cb33 = (CheckBox) findViewById(R.id.checkBox33);
+        CheckBox cb333 = (CheckBox) findViewById(R.id.checkBox333);
+        CheckBox cb4 = (CheckBox) findViewById(R.id.checkBox4);
+        CheckBox cb44 = (CheckBox) findViewById(R.id.checkBox44);
+        CheckBox cb444 = (CheckBox) findViewById(R.id.checkBox444);
+        CheckBox cb5 = (CheckBox) findViewById(R.id.checkBox5);
+        CheckBox cb55 = (CheckBox) findViewById(R.id.checkBox55);
+        CheckBox cb555 = (CheckBox) findViewById(R.id.checkBox555);
+        CheckBox cb6 = (CheckBox) findViewById(R.id.checkBox6);
+        CheckBox cb66 = (CheckBox) findViewById(R.id.checkBox66);
+        CheckBox cb666 = (CheckBox) findViewById(R.id.checkBox666);
+        CheckBox cb7 = (CheckBox) findViewById(R.id.checkBox7);
+        CheckBox cb77 = (CheckBox) findViewById(R.id.checkBox77);
+        CheckBox cb777 = (CheckBox) findViewById(R.id.checkBox777);
+
         ////月末から月の変更がまだできてない//1～9までは0を付けないといけない
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.YEAR, 2000);
@@ -487,7 +509,7 @@ public class ScheduleActivity extends AppCompatActivity {
             day = day+i;
             if(lastDayOfMonth == day){
                 dflag = i;
-            }else if(10 == day){
+            }else if((10 == day) && (i != 0)){
                 carryflag = i;
             }
         }
@@ -498,7 +520,7 @@ public class ScheduleActivity extends AppCompatActivity {
         int month = Global.getMonth();
         if(month < 10){
             zflag = 1;
-            if(month == 9){
+            if((month == 9) && (dflag != 0)){
                 crflag = 1;
             }
         }else if((dflag != 0) && (month == 12)){
@@ -507,16 +529,372 @@ public class ScheduleActivity extends AppCompatActivity {
 
         //年月日が替わったかどうか
         if((dflag == 0) && (carryflag == 0) && (zflag == 0)){
+            Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+            Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+            Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+            Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3),String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+            Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 4),String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+            Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 5),String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+            Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 6),String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+
+            Global.setDay(Global.getDay() + 7);
         }else if((carryflag != 0) && (zflag == 0)){
+            switch (carryflag) {
+                case 1:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-12",String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-13",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-14",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-15",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 2:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-12",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-13",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-14",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 3:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-12",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-13",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 4:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3),String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-12",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 5:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3),String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 4),String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 6:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3),String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 4),String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 5),String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+            }
+            Global.setDay(Global.getDay() + 7);
         }else if((carryflag != 0) && (zflag == 1)){
+            switch (carryflag) {
+                case 1:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-12",String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-13",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-14",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-15",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 2:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-12",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-13",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-14",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 3:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-12",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-13",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 4:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3),String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-12",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 5:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3),String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 4),String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-11",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 6:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3),String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 4),String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 5),String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-10",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+            }
+            Global.setDay(Global.getDay() + 7);
         }
         //日付により月が変わった時
         else if((dflag != 0) && (zflag == 0) && (mflag == 0)){
+            switch (dflag) {
+                case 1:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-01",String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-02",String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-03",String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-04",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-05",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-06",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 2:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-01",String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-02",String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-03",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-04",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-05",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 3:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-01",String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-02",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-03",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-04",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 4:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3),String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-01",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-02",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-03",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 5:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3),String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 4),String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-01",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-02",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 6:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3),String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 4),String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 5),String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-01",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+            }
+            Global.setDay(Global.getDay() + 7);
+            Global.setMonth(Global.getMonth() + 1);
         }else if((dflag != 0) && (zflag == 1) && (crflag == 0) && (mflag == 0)){
-
+            switch (dflag) {
+                case 1:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth() + 1) + "-01",String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth() + 1) + "-02",String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth() + 1) + "-03",String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth() + 1) + "-04",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth() + 1) + "-05",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth() + 1) + "-06",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 2:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth() + 1) + "-01",String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth() + 1) + "-02",String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth() + 1) + "-03",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth() + 1) + "-04",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth() + 1) + "-05",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 3:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth() + 1) + "-01",String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth() + 1) + "-02",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth() + 1) + "-03",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth() + 1) + "-04",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 4:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3),String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth() + 1) + "-01",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth() + 1) + "-02",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth() + 1) + "-03",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 5:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3),String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 4),String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth() + 1) + "-01",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth() + 1) + "-02",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 6:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3),String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 4),String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 5),String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth() + 1) + "-01",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+            }
+            Global.setDay(Global.getDay() + 7);
+            Global.setMonth(Global.getMonth() + 1);
         }else if((dflag != 0) && (zflag == 1) && (crflag == 1) && (mflag == 0)){
-
-        }else if((zflag == 0)&& (mflag == 1)){
+            switch (dflag) {
+                case 1:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-01",String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-02",String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-03",String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-04",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-05",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-06",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 2:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-01",String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-02",String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-03",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-04",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-05",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 3:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-01",String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-02",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-03",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-04",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 4:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3),String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-01",String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-02",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-03",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 5:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3),String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 4),String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-01",String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-02",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+                case 6:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()),String.valueOf( cb1.isChecked()),String.valueOf( cb11.isChecked()),String.valueOf( cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1),String.valueOf( cb2.isChecked()),String.valueOf( cb22.isChecked()),String.valueOf( cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2),String.valueOf( cb3.isChecked()),String.valueOf( cb33.isChecked()),String.valueOf( cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3),String.valueOf( cb4.isChecked()),String.valueOf( cb44.isChecked()),String.valueOf( cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 4),String.valueOf( cb5.isChecked()),String.valueOf( cb55.isChecked()),String.valueOf( cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-0" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 5),String.valueOf( cb6.isChecked()),String.valueOf( cb66.isChecked()),String.valueOf( cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth() + 1) + "-01",String.valueOf( cb7.isChecked()),String.valueOf( cb77.isChecked()),String.valueOf( cb777.isChecked()));
+                    break;
+            }
+            Global.setDay(Global.getDay() + 7);
+            Global.setMonth(Global.getMonth() + 1);
+        }else if((zflag == 0)&& (mflag == 1)) {
+            switch (dflag) {
+                case 1:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()), String.valueOf(cb1.isChecked()), String.valueOf(cb11.isChecked()), String.valueOf(cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear() + 1) + "-01-01", String.valueOf(cb2.isChecked()), String.valueOf(cb22.isChecked()), String.valueOf(cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear() + 1) + "-01-02", String.valueOf(cb3.isChecked()), String.valueOf(cb33.isChecked()), String.valueOf(cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear() + 1) + "-01-03", String.valueOf(cb4.isChecked()), String.valueOf(cb44.isChecked()), String.valueOf(cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear() + 1) + "-01-04", String.valueOf(cb5.isChecked()), String.valueOf(cb55.isChecked()), String.valueOf(cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear() + 1) + "-01-05", String.valueOf(cb6.isChecked()), String.valueOf(cb66.isChecked()), String.valueOf(cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear() + 1) + "-01-06", String.valueOf(cb7.isChecked()), String.valueOf(cb77.isChecked()), String.valueOf(cb777.isChecked()));
+                    break;
+                case 2:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()), String.valueOf(cb1.isChecked()), String.valueOf(cb11.isChecked()), String.valueOf(cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1), String.valueOf(cb2.isChecked()), String.valueOf(cb22.isChecked()), String.valueOf(cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear() + 1) + "-01-01", String.valueOf(cb3.isChecked()), String.valueOf(cb33.isChecked()), String.valueOf(cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear() + 1) + "-01-02", String.valueOf(cb4.isChecked()), String.valueOf(cb44.isChecked()), String.valueOf(cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear() + 1) + "-01-03", String.valueOf(cb5.isChecked()), String.valueOf(cb55.isChecked()), String.valueOf(cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear() + 1) + "-01-04", String.valueOf(cb6.isChecked()), String.valueOf(cb66.isChecked()), String.valueOf(cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear() + 1) + "-01-05", String.valueOf(cb7.isChecked()), String.valueOf(cb77.isChecked()), String.valueOf(cb777.isChecked()));
+                    break;
+                case 3:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()), String.valueOf(cb1.isChecked()), String.valueOf(cb11.isChecked()), String.valueOf(cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1), String.valueOf(cb2.isChecked()), String.valueOf(cb22.isChecked()), String.valueOf(cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2), String.valueOf(cb3.isChecked()), String.valueOf(cb33.isChecked()), String.valueOf(cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear() + 1) + "-01-01", String.valueOf(cb4.isChecked()), String.valueOf(cb44.isChecked()), String.valueOf(cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear() + 1) + "-01-02", String.valueOf(cb5.isChecked()), String.valueOf(cb55.isChecked()), String.valueOf(cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear() + 1) + "-01-03", String.valueOf(cb6.isChecked()), String.valueOf(cb66.isChecked()), String.valueOf(cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear() + 1) + "-01-04", String.valueOf(cb7.isChecked()), String.valueOf(cb77.isChecked()), String.valueOf(cb777.isChecked()));
+                    break;
+                case 4:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()), String.valueOf(cb1.isChecked()), String.valueOf(cb11.isChecked()), String.valueOf(cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1), String.valueOf(cb2.isChecked()), String.valueOf(cb22.isChecked()), String.valueOf(cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2), String.valueOf(cb3.isChecked()), String.valueOf(cb33.isChecked()), String.valueOf(cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3), String.valueOf(cb4.isChecked()), String.valueOf(cb44.isChecked()), String.valueOf(cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear() + 1) + "-01-01", String.valueOf(cb5.isChecked()), String.valueOf(cb55.isChecked()), String.valueOf(cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear() + 1) + "-01-02", String.valueOf(cb6.isChecked()), String.valueOf(cb66.isChecked()), String.valueOf(cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear() + 1) + "-01-03", String.valueOf(cb7.isChecked()), String.valueOf(cb77.isChecked()), String.valueOf(cb777.isChecked()));
+                    break;
+                case 5:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()), String.valueOf(cb1.isChecked()), String.valueOf(cb11.isChecked()), String.valueOf(cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1), String.valueOf(cb2.isChecked()), String.valueOf(cb22.isChecked()), String.valueOf(cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2), String.valueOf(cb3.isChecked()), String.valueOf(cb33.isChecked()), String.valueOf(cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3), String.valueOf(cb4.isChecked()), String.valueOf(cb44.isChecked()), String.valueOf(cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 4), String.valueOf(cb5.isChecked()), String.valueOf(cb55.isChecked()), String.valueOf(cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear() + 1) + "-01-01", String.valueOf(cb6.isChecked()), String.valueOf(cb66.isChecked()), String.valueOf(cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear() + 1) + "-01-02", String.valueOf(cb7.isChecked()), String.valueOf(cb77.isChecked()), String.valueOf(cb777.isChecked()));
+                    break;
+                case 6:
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay()), String.valueOf(cb1.isChecked()), String.valueOf(cb11.isChecked()), String.valueOf(cb111.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 1), String.valueOf(cb2.isChecked()), String.valueOf(cb22.isChecked()), String.valueOf(cb222.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 2), String.valueOf(cb3.isChecked()), String.valueOf(cb33.isChecked()), String.valueOf(cb333.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 3), String.valueOf(cb4.isChecked()), String.valueOf(cb44.isChecked()), String.valueOf(cb444.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 4), String.valueOf(cb5.isChecked()), String.valueOf(cb55.isChecked()), String.valueOf(cb555.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear()) + "-" + String.valueOf(Global.getMonth()) + "-" + String.valueOf(Global.getDay() + 5), String.valueOf(cb6.isChecked()), String.valueOf(cb66.isChecked()), String.valueOf(cb666.isChecked()));
+                    Global.setScheduleinfo(String.valueOf(Global.getYear() + 1) + "-01-01", String.valueOf(cb7.isChecked()), String.valueOf(cb77.isChecked()), String.valueOf(cb777.isChecked()));
+                    break;
+            }
+            Global.setDay(Global.getDay() + 7);
+            Global.setMonth(1);
+            Global.setYear(Global.getYear() + 1);
         }
+        ConnectHttpSchedule post = new ConnectHttpSchedule();
+        post.ScheduleSet(this,mymail);
     }
 }
