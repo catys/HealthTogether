@@ -195,4 +195,18 @@
         android:layout_weight="0.01"
         android:onClick="ScheduleAdd"/>
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="137dp"
+        android:layout_height="31dp"
+        android:text="次へ"
+        android:layout_weight="0.01"
+        android:onClick=""/>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="134dp"
+        android:layout_height="33dp"
+        android:text="前へ" />
+
 </LinearLayout>
