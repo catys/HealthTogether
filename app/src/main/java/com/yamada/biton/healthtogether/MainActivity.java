@@ -21,4 +21,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, FriendActivity.class);
         startActivity(intent);
     }
+
+    public void ScheduleClick(View v){
+        Intent intent = new Intent(MainActivity.this, ScheduleActivity.class);
+        startActivity(intent);
+    }
 }
