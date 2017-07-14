@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.yamada.biton.healthtogether.EntryActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <CheckBox
+                android:id="@+id/monitorChck"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="監視者として登録する" />
+
+
+            <ImageButton
+                android:id="@+id/imgBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="imgClick"
+                app:srcCompat="@mipmap/ic_launcher" />
+
+            <EditText
+                android:id="@+id/mailTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/imgBtn"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:text="mailadress" />
+
+            <EditText
+                android:id="@+id/passTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/mailTxt"
+                android:ems="10"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/passRetypeTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/passTxt"
+                android:ems="10"
+                android:inputType="textPassword" />
+
+            <RadioButton
+                android:id="@+id/manRadioBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/nickTxt"
+                android:text="man" />
+
+            <RadioButton
+                android:id="@+id/womanRadioBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/heightTxt"
+                android:layout_toEndOf="@+id/manRadioBtn"
+                android:text="woman" />
+
+            <EditText
+                android:id="@+id/nickTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/passRetypeTxt"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="nickname" />
+
+            <EditText
+                android:id="@+id/heightTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/manRadioBtn"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="height" />
+
+            <EditText
+                android:id="@+id/ageTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/heightTxt"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="age" />
+
+            <Button
+                android:id="@+id/confirmBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/ageTxt"
+                android:onClick="ConfirmClick"
+                android:text="Confirmation" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
