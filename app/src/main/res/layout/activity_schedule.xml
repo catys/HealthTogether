@@ -201,7 +201,7 @@
         android:layout_height="31dp"
         android:text="次へ"
         android:layout_weight="0.01"
-        android:onClick=""/>
+        android:onClick="DayNext"/>
 
     <Button
         android:id="@+id/button3"
