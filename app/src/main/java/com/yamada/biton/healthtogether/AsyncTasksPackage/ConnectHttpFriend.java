@@ -43,7 +43,6 @@ public class ConnectHttpFriend extends Activity{
     private static final String TAG = ConnectHttpFriend.class.getSimpleName();
     private AsyncTask<Uri, Void, String> mTask;
     private Activity mActivity;
-    Global global = (Global)getApplication();
 
     private ListView fLV;
     private ArrayList<FriendInfo> fFI;
@@ -326,7 +325,7 @@ public class ConnectHttpFriend extends Activity{
                             textView.setText(nick);
                             button2.setImageResource(release_button);
 
-                            global.setFlag(1);
+                            Global.setFlag(1);
                         }else{
                             textView.setVisibility(View.VISIBLE);
                             button2.setVisibility(View.VISIBLE);
@@ -334,7 +333,7 @@ public class ConnectHttpFriend extends Activity{
                             textView.setText("友達じゃない");
                             button2.setImageResource(entry_button);
 
-                            global.setFlag(0);
+                            Global.setFlag(0);
                         }
 
                         mTask = null;

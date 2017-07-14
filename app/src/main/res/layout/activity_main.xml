@@ -8,7 +8,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="FriendClick"
-        android:text="Button" />
+        android:text="Friend" />
+
+    <Button
+        android:id="@+id/schedule_move"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="ScheduleClick"
+        android:text="Schedule" />
 
     <Button
         android:id="@+id/MeasurementHistoryCheck"

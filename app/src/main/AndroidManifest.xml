@@ -26,10 +26,6 @@
             android:name=".FriendActivity"
             android:label="@string/app_name">
         </activity>
-        <activity
-            android:name=".MeasurementHistoryActivity"
-            android:label="@string/app_name">
-        </activity>
     </application>
 
 </manifest>

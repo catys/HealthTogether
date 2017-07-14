@@ -26,13 +26,10 @@ import java.util.Objects;
 public class FriendActivity  extends AppCompatActivity  {
     //ユーザーのメールアドレスを設定
     String mymail = "testmail1",friendmail;
-    Global global = (Global)getApplication();
-    Activity fActivity = this;
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend);
-        global = (Global)getApplication();
 
         ListView listView = (ListView)findViewById(R.id.listView);
 
@@ -68,17 +65,17 @@ public class FriendActivity  extends AppCompatActivity  {
     //フレンドの追加、解除
     public void FriendAdd(View v){
         //Global変数のflagを確認し、友達かどうか判定
-        int flag = global.getFlag();
+        int flag = Global.getFlag();
         if(flag == 0){
             //追加
             ConnectHttpFriend postdata = new ConnectHttpFriend();
             postdata.FriendAdd(this,mymail,friendmail);
-            global.setFlag(1);
+            Global.setFlag(1);
         }else{
             //削除
             ConnectHttpFriend postdata = new ConnectHttpFriend();
             postdata.FriendDelete(this,mymail,friendmail);
-            global.setFlag(0);
+            Global.setFlag(0);
         }
     }
 
