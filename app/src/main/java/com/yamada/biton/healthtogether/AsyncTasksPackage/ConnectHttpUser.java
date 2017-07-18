@@ -515,7 +515,7 @@ public class ConnectHttpUser extends Activity {
     }
 
 
-    public void UserUpdate(String beforemail,String $mail,String pass,String nick,String proURL,String sex,String height,String age,String bw,String bf,String bmi,String vf,String sm,String ba,String bm) {
+    public void UserUpdate(Activity activity,String beforemail,String mail,String pass,String nick,String proURL,String bw,String bf,String bmi,String vf,String sm,String ba,String bm) {
         //    mActivity = activity;
 
         // URLを、扱いやすいUri型で組む
@@ -524,20 +524,18 @@ public class ConnectHttpUser extends Activity {
 
         // パラメータの付与
         Uri uri = baseUri.buildUpon()
- /*               .appendQueryParameter("mymail",mymail)
-                .appendQueryParameter("friendmail",friendmail)
-                .appendQueryParameter("mymail",mymail)
-                .appendQueryParameter("friendmail",friendmail)
-                .appendQueryParameter("mymail",mymail)
-                .appendQueryParameter("friendmail",friendmail)
-                .appendQueryParameter("mymail",mymail)
-                .appendQueryParameter("friendmail",friendmail)
-                .appendQueryParameter("mymail",mymail)
-                .appendQueryParameter("friendmail",friendmail)
-                .appendQueryParameter("mymail",mymail)
-                .appendQueryParameter("friendmail",friendmail)
-                .appendQueryParameter("mymail",mymail)
-                .appendQueryParameter("friendmail",friendmail)*/
+                .appendQueryParameter("beforemail",beforemail)
+                .appendQueryParameter("mailaddress",mail)
+                .appendQueryParameter("password",pass)
+                .appendQueryParameter("nickname",nick)
+                .appendQueryParameter("profileURL",proURL)
+                .appendQueryParameter("bwflag",bw)
+                .appendQueryParameter("bfflag",bf)
+                .appendQueryParameter("bmiflag",bmi)
+                .appendQueryParameter("vfflag",vf)
+                .appendQueryParameter("smflag",sm)
+                .appendQueryParameter("baflag",ba)
+                .appendQueryParameter("bmflag",bm)
                 .build();
 
         if (mTask == null) {
