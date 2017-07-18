@@ -65,4 +65,9 @@ public class StartActivity extends AppCompatActivity {
 
         db.delete("user", null, null);
     }
+
+    public void getClick(View v){
+        Intent intent = new Intent(StartActivity.this, getvital.class);
+        startActivity(intent);
+    }
 }

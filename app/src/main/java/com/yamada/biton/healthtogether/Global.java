@@ -2,7 +2,6 @@ package com.yamada.biton.healthtogether;
 
 import android.app.Application;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,6 +9,9 @@ import java.util.List;
  */
 
 public class Global extends Application {
+
+
+
     @Override
     public void onCreate(){
         super.onCreate();
@@ -27,7 +29,6 @@ public class Global extends Application {
         return flag;
     }
 
-    ////////////////////////////////////////////////////
 
     ///////////BitMap共有用///////////////////////////////////////////////
     public static android.graphics.Bitmap bmp;
@@ -41,4 +42,27 @@ public class Global extends Application {
     }
     ///////////////////////////////////////////////////////////////////////
 
+    //グラフ
+    //////////////////////////////////////////
+    private static String tvital;
+    private static float[] vData ;
+    public static void setvital(float[]ydata){
+        vData = new float[30];
+        vData = ydata;
+    }
+
+    public static float[] getvital(){
+        return vData;
+    }
+
+    public static void settotal(String Tvital){
+        tvital = Tvital;
+        System.out.println("settotal");
+        System.out.println(tvital);
+    }
+    public static String gettotal(){
+        System.out.println("gettotal");
+        System.out.println(tvital);
+        return tvital;
+    }
 }

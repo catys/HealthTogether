@@ -2,12 +2,6 @@ package com.yamada.biton.healthtogether;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.TextView;
-
-import com.yamada.biton.healthtogether.AsyncTasksPackage.ConnectHttpFriend;
-import com.yamada.biton.healthtogether.AsyncTasksPackage.ConnectHttpSchedule;
 
 import java.util.Calendar;
 
@@ -30,7 +24,7 @@ public class ScheduleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
 
-        Global.resetScheduleinfo();
+       /* Global.resetScheduleinfo();
 
         Global.setYear(year);
         Global.setMonth(month);
@@ -895,6 +889,6 @@ public class ScheduleActivity extends AppCompatActivity {
             Global.setYear(Global.getYear() + 1);
         }
         ConnectHttpSchedule post = new ConnectHttpSchedule();
-        post.ScheduleSet(this,mymail);
+        post.ScheduleSet(this,mymail);*/
     }
 }

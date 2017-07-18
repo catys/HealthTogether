@@ -1,23 +1,15 @@
 package com.yamada.biton.healthtogether;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.SpannableStringBuilder;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.yamada.biton.healthtogether.AsyncTasksPackage.ConnectHttpFriend;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 /**
  * Created by 優太 on 2017/06/28.
@@ -49,7 +41,7 @@ public class FriendActivity  extends AppCompatActivity  {
         textparam.setVisibility(View.GONE);
         button2.setVisibility(View.GONE);
     }
-
+/*
     //フレンド検索
     public void FriendSearch(View v){
         //EditText内に入力された値を取得
@@ -78,7 +70,7 @@ public class FriendActivity  extends AppCompatActivity  {
             Global.setFlag(0);
         }
     }
-
+    /*
     //フレンド情報共有設定
     public void FriendInfoShare(View v){
         ConnectHttpFriend postdata = new ConnectHttpFriend();
@@ -91,6 +83,6 @@ public class FriendActivity  extends AppCompatActivity  {
         postdata.FriendScheduleUpdate(this,mymail,(String)((ImageButton)v).getTag(),v);
     }
 
-
+*/
 
 }

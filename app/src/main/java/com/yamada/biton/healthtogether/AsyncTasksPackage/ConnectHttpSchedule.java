@@ -5,15 +5,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
 
-import com.yamada.biton.healthtogether.Global;
 import com.yamada.biton.healthtogether.R;
 
 import org.json.JSONArray;
@@ -27,9 +20,6 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Created by 優太 on 2017/07/07.
@@ -61,9 +51,9 @@ public class ConnectHttpSchedule extends Activity {
     public void ScheduleSet(Activity activity,String mymail) {
         mActivity = activity;
 
-        setyear = Global.getYear();
-        setmonth = Global.getMonth();
-        setday = Global.getDay();
+        //setyear = Global.getYear();
+       // setmonth = Global.getMonth();
+       // setday = Global.getDay();
 
         Uri baseUri = Uri
                 .parse("http://54.92.74.113/sue/ScheduleSet.php");
@@ -321,13 +311,13 @@ public class ConnectHttpSchedule extends Activity {
     public void ScheduleInsert(Activity activity,String mymail) {
         mActivity = activity;
 
-        int max = Global.getScheduleinfoSize();
+        //int max = Global.getScheduleinfoSize();
 
         Uri baseUri = Uri
                 .parse("http://54.92.74.113/sue/ScheduleAdd.php");
 
 
-        Uri uri = null;
+        Uri uri = null;/*
         // パラメータの付与//チェックボックスのデータを送信//時間ないので脳筋で～2週間分まで
         if(max == 7){
             uri = baseUri.buildUpon()
@@ -641,7 +631,7 @@ public class ConnectHttpSchedule extends Activity {
                     .build();
         }
         System.out.println(uri);
-
+*/
         if (mTask == null) {
             mTask = new AsyncTask<Uri, Void, String>() {
                 /**
