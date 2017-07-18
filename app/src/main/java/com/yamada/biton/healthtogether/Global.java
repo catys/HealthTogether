@@ -3,7 +3,6 @@ package com.yamada.biton.healthtogether;
 import android.app.Application;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -29,5 +28,17 @@ public class Global extends Application {
     }
 
     ////////////////////////////////////////////////////
+
+    ///////////BitMap共有用///////////////////////////////////////////////
+    public static android.graphics.Bitmap bmp;
+
+    public void setbmp(android.graphics.Bitmap bmp){
+        this.bmp = bmp;
+    }
+
+    public android.graphics.Bitmap getbmp(){
+        return this.bmp;
+    }
+    ///////////////////////////////////////////////////////////////////////
 
 }
