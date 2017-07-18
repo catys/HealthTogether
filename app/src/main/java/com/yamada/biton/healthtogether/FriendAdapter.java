@@ -55,12 +55,13 @@ public class FriendAdapter extends BaseAdapter {
         convertView = layoutInflater.inflate(R.layout.friendrow,parent,false);
 
         //文字を設定
-        ((TextView) convertView.findViewById(R.id.mymail)).setText(friendList.get(position).getMymail());
         ((TextView) convertView.findViewById(R.id.friendmail)).setText(friendList.get(position).getFriendmail());
 
         //tagを設定
         ((ImageButton)convertView.findViewById(R.id.info_Button)).setTag(friendList.get(position).getFriendmail());
         ((ImageButton)convertView.findViewById(R.id.schedule_Button)).setTag(friendList.get(position).getFriendmail());
+
+        ((ImageButton)convertView.findViewById(R.id.friendAD)).setTag(friendList.get(position).getFriendmail());
 
         //情報共有
         String hantei = friendList.get(position).getAllreleaseflag();
@@ -77,6 +78,9 @@ public class FriendAdapter extends BaseAdapter {
         }else{
             ((ImageButton) convertView.findViewById(R.id.schedule_Button)).setImageResource(share_button);
         }
+
+        //友達
+        ((ImageButton) convertView.findViewById(R.id.friendAD)).setImageResource(release_button);
 
         return convertView;
     }

@@ -3,16 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="my-mail"
-        android:id="@+id/mymail"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_margin="10dp" />
-
     <!-- layout_below,alignStartは後にid設定を行う -->
     <TextView
         android:layout_width="wrap_content"
@@ -23,18 +13,32 @@
         android:layout_below="@+id/name"
         android:layout_alignStart="@+id/name" />
 
-    <ImageButton
-        android:id="@+id/info_Button"
-        android:layout_width="56dp"
-        android:layout_height="wrap_content"
-        android:onClick="FriendInfoShare"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-    <ImageButton
-        android:id="@+id/schedule_Button"
-        android:layout_width="56dp"
-        android:layout_height="wrap_content"
-        android:onClick="FriendScheduleShare"
-        />
+        <ImageButton
+            android:id="@+id/schedule_Button"
+            android:layout_width="56dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="FriendScheduleShare" />
+
+        <ImageButton
+            android:id="@+id/info_Button"
+            android:layout_width="56dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="FriendInfoShare" />
+
+        <ImageButton
+            android:id="@+id/friendAD"
+            android:layout_width="56dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="FriendAdd2"
+            />
+    </LinearLayout>
 
 </LinearLayout>

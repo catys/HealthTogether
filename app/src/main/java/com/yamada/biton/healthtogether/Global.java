@@ -30,12 +30,14 @@ public class Global extends Application {
     //スケジュール関係//////////////////////////////////
     static long id;
     static List<List<String>> scheduleinfo = new ArrayList<List<String>>();
+    static List<String> friendlist = new ArrayList<String>();
     static int year;
     static int month;
     static int day;
 
     public static void resetScheduleinfo(){
         scheduleinfo.clear();
+        friendlist.clear();
     }
 
     public static void setScheduleinfo(String date,String morning,String noon,String night){
@@ -95,6 +97,12 @@ public class Global extends Application {
     public static int getDay(){
         return day;
     }
+
+    public static void setFriendlist(String friend){
+        friendlist.add(friend);
+    }
+
+    public static List<String> getFriendlist(){ return friendlist;}
     ////////////////////////////////////////////////////
 
     ///////////BitMap共有用///////////////////////////////////////////////

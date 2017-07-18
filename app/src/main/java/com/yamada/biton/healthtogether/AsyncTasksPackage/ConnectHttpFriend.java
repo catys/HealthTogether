@@ -21,6 +21,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -174,10 +175,11 @@ public class ConnectHttpFriend extends Activity{
                             String allreleaseflag = item.getString("allreleaseflag");
                             String scheduleflag = item.getString("scheduleflag");
                             String profile = item.getString("profileURL");
+                            String friendADbtn = "1";
 
 
                             fi.setFriendmail(fmail);
-                            fi.setMymail("できたねん");
+                            //fi.setMymail("できたねん");
                             fi.setAllreleaseflag(allreleaseflag);
                             fi.setScheduleflag(scheduleflag);
 
@@ -318,9 +320,16 @@ public class ConnectHttpFriend extends Activity{
 
                         ImageButton button2 = (ImageButton)mActivity.findViewById(R.id.friendGetButton);
 
-                        if(hantei.equals("友達")){
+                        TextView textView2 = (TextView) mActivity.findViewById(R.id.resultText);
+
+                        /*if(result.equals(null)){
+                            textView2.setVisibility(View.VISIBLE);
+                            textView2.setText("検索結果　なし");
+                        }
+                        else */if(hantei.equals("友達")){
                             textView.setVisibility(View.VISIBLE);
                             button2.setVisibility(View.VISIBLE);
+                            textView2.setVisibility(View.VISIBLE);
 
                             textView.setText(nick);
                             button2.setImageResource(release_button);
@@ -329,6 +338,7 @@ public class ConnectHttpFriend extends Activity{
                         }else{
                             textView.setVisibility(View.VISIBLE);
                             button2.setVisibility(View.VISIBLE);
+                            textView2.setVisibility(View.VISIBLE);
 
                             textView.setText("友達じゃない");
                             button2.setImageResource(entry_button);
@@ -390,13 +400,13 @@ public class ConnectHttpFriend extends Activity{
                 }
 
                 private String request(Uri uri ) {
-                    java.net.HttpURLConnection http = null;
+                    HttpURLConnection http = null;
                     InputStream is = null;
                     String result = null;
                     try {
                         // URLにHTTP接続
                         URL url = new URL(uri.toString());
-                        http = (java.net.HttpURLConnection) url.openConnection();
+                        http = (HttpURLConnection) url.openConnection();
 
                         http.setConnectTimeout(3000);//接続タイムアウトを設定する。
                         http.setReadTimeout(3000);//レスポンスデータ読み取りタイムアウトを設定する。
@@ -456,8 +466,8 @@ public class ConnectHttpFriend extends Activity{
                 @Override
                 protected void onPostExecute(String result) {
                     try {
-                        ImageButton button2 = (ImageButton)mActivity.findViewById(R.id.friendGetButton);
-                        button2.setImageResource(release_button);
+                        ImageButton button1 = (ImageButton)mActivity.findViewById(R.id.friendGetButton);
+                        button1.setImageResource(release_button);
 
                         mTask = null;
                     } catch (Exception e) {
@@ -579,8 +589,8 @@ public class ConnectHttpFriend extends Activity{
                 @Override
                 protected void onPostExecute(String result) {
                     try {
-                        ImageButton button2 = (ImageButton)mActivity.findViewById(R.id.friendGetButton);
-                        button2.setImageResource(entry_button);
+                        ImageButton button1 = (ImageButton)mActivity.findViewById(R.id.friendGetButton);
+                        button1.setImageResource(entry_button);
 
                         mTask = null;
                     } catch (Exception e) {

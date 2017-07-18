@@ -20,17 +20,38 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" />
+            android:label="@string/app_name"  >
+        </activity>
         <activity
             android:name=".FriendActivity"
-            android:label="@string/app_name" />
+            android:label="@string/app_name">
+        </activity>
         <activity
             android:name=".ScheduleActivity"
-            android:label="@string/app_name" />
-        <activity android:name=".EntryActivity" />
-        <activity android:name=".EntryConfirmActivity" />
-        <activity android:name=".UserActivity" />
-        <activity android:name=".UserEditActivity"></activity>
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name=".ScheduleShareActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name=".EntryActivity"
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name=".EntryConfirmActivity"
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name=".UserActivity"
+            android:label="@string/app_name">
+        </activity>
+        <activity
+        android:name=".UserEditActivity"
+        android:label="@string/app_name">
+    </activity>
+
     </application>
 
 </manifest>

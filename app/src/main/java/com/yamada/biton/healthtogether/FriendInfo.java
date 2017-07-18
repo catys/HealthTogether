@@ -12,6 +12,7 @@ public class FriendInfo {
     String friendmail;
     String allreleaseflag;
     String scheduleflag;
+    String friendADbtn;
 
     //String profile;
 
@@ -54,4 +55,5 @@ public class FriendInfo {
     public String getScheduleflag(){
         return scheduleflag;
     }
+
 }

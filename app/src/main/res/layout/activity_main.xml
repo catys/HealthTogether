@@ -10,11 +10,18 @@
         android:onClick="FriendClick"
         android:text="Friend" />
 
-    <Button
+    <!--Button
         android:id="@+id/schedule_move"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="ScheduleClick"
-        android:text="Schedule" />
+        android:text="Schedule" /-->
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        android:onClick="UserClick"/>
 
 </LinearLayout>

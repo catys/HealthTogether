@@ -19,6 +19,8 @@ import com.yamada.biton.healthtogether.AsyncTasksPackage.ConnectHttpFriend;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import static com.yamada.biton.healthtogether.R.drawable.entry_button;
+
 /**
  * Created by 優太 on 2017/06/28.
  */
@@ -44,10 +46,23 @@ public class FriendActivity  extends AppCompatActivity  {
 
         TextView textparam = (TextView)findViewById(R.id.friendText);
         ImageButton button2 = (ImageButton)findViewById(R.id.friendGetButton);
+        TextView restex = (TextView)findViewById(R.id.resultText);
 
         //初期値を非表示
         textparam.setVisibility(View.GONE);
         button2.setVisibility(View.GONE);
+        restex.setVisibility(View.GONE);
+    }
+
+    //リロード
+    public void Reload(View v) {
+        Intent intent = getIntent();
+        overridePendingTransition(0, 0);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        finish();
+
+        overridePendingTransition(0, 0);
+        startActivity(intent);
     }
 
     //フレンド検索
@@ -79,6 +94,17 @@ public class FriendActivity  extends AppCompatActivity  {
         }
     }
 
+    //フレンドの追加、解除
+    public void FriendAdd2(View v){
+        //Global変数のflagを確認し、友達かどうか判定
+        String fmail = (String)((ImageButton)v).getTag();
+        ImageButton button2 = ((ImageButton)v.findViewWithTag(fmail));
+
+        System.out.println("押された場所");
+        //解除の方法をどうするか。消すか残すか
+        button2.setImageResource(entry_button);
+    }
+
     //フレンド情報共有設定
     public void FriendInfoShare(View v){
         ConnectHttpFriend postdata = new ConnectHttpFriend();
@@ -90,7 +116,5 @@ public class FriendActivity  extends AppCompatActivity  {
         ConnectHttpFriend postdata = new ConnectHttpFriend();
         postdata.FriendScheduleUpdate(this,mymail,(String)((ImageButton)v).getTag(),v);
     }
-
-
 
 }
