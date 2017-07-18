@@ -1,5 +1,9 @@
 package com.yamada.biton.healthtogether.AsyncTasksPackage;
 
+/**
+ * Created by Syota-1207 on 2017/07/13.
+ */
+
 import android.app.Activity;
 import android.net.Uri;
 import android.os.AsyncTask;

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_result"
+            android:icon="@android:drawable/ic_menu_my_calendar"
+            android:title="測定結果" />
+        <item
+            android:id="@+id/menu_history"
+            android:icon="@android:drawable/ic_menu_myplaces"
+            android:title="測定履歴" />
+        <item
+            android:id="@+id/menu_schedule"
+            android:icon="@android:drawable/ic_menu_my_calendar"
+            android:title="スケジュール" />
+        <item
+            android:id="@+id/menu_friend"
+            android:icon="@android:drawable/ic_menu_my_calendar"
+            android:title="フレンド" />
+        <item
+            android:id="@+id/menu_ranking"
+            android:icon="@android:drawable/ic_menu_my_calendar"
+            android:title="ランキング" />
+        <item
+            android:id="@+id/menu_user"
+            android:icon="@android:drawable/ic_menu_my_calendar"
+            android:title="個人情報表示" />
+        <item
+            android:id="@+id/menu_contact"
+            android:icon="@android:drawable/ic_menu_my_calendar"
+            android:title="お問い合わせ投稿" />
+    </group>
+</menu>

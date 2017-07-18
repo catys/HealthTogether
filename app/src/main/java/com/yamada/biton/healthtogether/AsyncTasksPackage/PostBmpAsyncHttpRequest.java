@@ -3,10 +3,8 @@ package com.yamada.biton.healthtogether.AsyncTasksPackage;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
-import android.widget.TextView;
 
 import com.yamada.biton.healthtogether.Param;
-import com.yamada.biton.healthtogether.R;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -15,12 +13,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.net.*;
+import java.net.URL;
 
 
 /**
  * Created by 優太 on 2017/06/28.
  */
+
+//inumaru0718
 
 public class PostBmpAsyncHttpRequest extends AsyncTask<Param, Void, String> {
     private Activity mActivity;

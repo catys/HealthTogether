@@ -24,4 +24,11 @@
         android:text="Button"
         android:onClick="UserClick"/>
 
+    <Button
+        android:id="@+id/MeasurementHistoryCheck"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="MeasurementHistoryClick"
+        android:text="Button1" />
+
 </LinearLayout>
