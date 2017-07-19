@@ -34,6 +34,7 @@ import com.yamada.biton.healthtogether.Global;
 import com.yamada.biton.healthtogether.R;
 import static com.yamada.biton.healthtogether.R.drawable.entry_button;
 import static com.yamada.biton.healthtogether.R.drawable.release_button;
+import static com.yamada.biton.healthtogether.R.drawable.release_button2;
 import static com.yamada.biton.healthtogether.R.drawable.share_button;
 
 /**
@@ -176,7 +177,6 @@ public class ConnectHttpFriend extends Activity{
                             String scheduleflag = item.getString("scheduleflag");
                             String profile = item.getString("profileURL");
                             String friendADbtn = "1";
-
 
                             fi.setFriendmail(fmail);
                             //fi.setMymail("できたねん");
@@ -322,6 +322,8 @@ public class ConnectHttpFriend extends Activity{
 
                         TextView textView2 = (TextView) mActivity.findViewById(R.id.resultText);
 
+                        LinearLayout ll = (LinearLayout) mActivity.findViewById(R.id.ll);
+
                         /*if(result.equals(null)){
                             textView2.setVisibility(View.VISIBLE);
                             textView2.setText("検索結果　なし");
@@ -330,6 +332,7 @@ public class ConnectHttpFriend extends Activity{
                             textView.setVisibility(View.VISIBLE);
                             button2.setVisibility(View.VISIBLE);
                             textView2.setVisibility(View.VISIBLE);
+                            ll.setVisibility(View.VISIBLE);
 
                             textView.setText(nick);
                             button2.setImageResource(release_button);
@@ -339,8 +342,9 @@ public class ConnectHttpFriend extends Activity{
                             textView.setVisibility(View.VISIBLE);
                             button2.setVisibility(View.VISIBLE);
                             textView2.setVisibility(View.VISIBLE);
+                            ll.setVisibility(View.VISIBLE);
 
-                            textView.setText("友達じゃない");
+                            textView.setText(nick);
                             button2.setImageResource(entry_button);
 
                             Global.setFlag(0);
@@ -615,6 +619,256 @@ public class ConnectHttpFriend extends Activity{
         }
     }
 
+    public void FriendAdd2(Activity activity,String mymail,String friendmail, View v) {
+        mActivity = activity;
+        fView = v;
+        fmail = friendmail;
+
+        // URLを、扱いやすいUri型で組む
+        Uri baseUri = Uri
+                .parse("http://54.92.74.113/sue/FriendAdd.php");
+
+        // パラメータの付与
+        Uri uri = baseUri.buildUpon()
+                .appendQueryParameter("mymail",mymail)
+                .appendQueryParameter("friendmail",friendmail)
+                .build();
+
+        if (mTask == null) {
+            mTask = new AsyncTask<Uri, Void, String>() {
+                /**
+                 * 通信において発生したエラー
+                 */
+                private Throwable mError = null;
+
+                @Override
+                protected String doInBackground(Uri... params) {
+                    Uri uri = params[0];
+                    sendText("\n通信開始\n");
+
+                    String result = request(uri);
+
+                    return result;
+                }
+
+                private String request(Uri uri ) {
+                    HttpURLConnection http = null;
+                    InputStream is = null;
+                    String result = null;
+                    try {
+                        // URLにHTTP接続
+                        URL url = new URL(uri.toString());
+                        http = (HttpURLConnection) url.openConnection();
+
+                        http.setConnectTimeout(3000);//接続タイムアウトを設定する。
+                        http.setReadTimeout(3000);//レスポンスデータ読み取りタイムアウトを設定する。
+
+                        http.setRequestMethod("POST");
+                        http.setDoOutput(true);// POSTによるデータ送信を可能
+                        http.setRequestProperty("User-Agent", "@IT java-tips URLConnection");// ヘッダを設定
+                        http.setRequestProperty("Accept-Language", "ja");// ヘッダを設定
+
+                        http.setDoInput(true);//リクエストのボディ送信を許可する
+                        http.setDoOutput(true);//レスポンスのボディ受信を許可する
+
+                        OutputStream os = http.getOutputStream();//POST用のOutputStreamを取得
+
+                        String postStr = "name=";//POSTするデータ
+                        PrintStream ps = new PrintStream(os);
+                        ps.print(postStr);//データをPOSTする
+                        ps.close();
+                        http.connect();
+                        is = http.getInputStream();
+
+                        result = toString(is);
+                        sendText(result);
+                    } catch (MalformedURLException e) {
+                        Log.e(TAG, "通信失敗", e);
+                        sendText(e.toString());
+                    } catch (IOException e) {
+                        Log.e(TAG, "通信失敗", e);
+                        sendText(e.toString());
+                    } finally {
+                        if (http != null) {
+                            http.disconnect();
+                        }
+                        try {
+                            if (is != null) {
+                                is.close();
+                            }
+                        } catch (IOException e) {
+                            Log.e(TAG, "ストリームのクローズ失敗", e);
+                        }
+                    }
+                    return result;
+                }
+
+                private String toString(InputStream is) throws IOException {
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(is, "UTF-8"));
+                    StringBuilder sb = new StringBuilder();
+                    char[] b = new char[1024];
+                    int line;
+                    while (0 <= (line = reader.read(b))) {
+                        sb.append(b, 0, line);
+                    }
+                    return sb.toString();
+                }
+
+                @Override
+                protected void onPostExecute(String result) {
+                    try {
+                        ImageButton button2 = ((ImageButton)fView.findViewWithTag(fmail));
+                        button2.setImageResource(release_button);
+
+                        mTask = null;
+                    } catch (Exception e) {
+                    }
+
+                }
+
+                @Override
+                protected void onCancelled() {
+                    onCancelled(null);
+                }
+
+                @Override
+                protected void onCancelled(String result) {
+                    sendText("\nonCancelled(String result), result=" + result);
+
+                    mTask = null;
+                }
+            }.execute(uri);
+        } else {
+            // 現在通信のタスクが実行中。重複して実行されないように制御。
+        }
+    }
+
+    public void FriendDelete2(Activity activity,String mymail,String friendmail, View v) {
+        mActivity = activity;
+        fView = v;
+        fmail = friendmail;
+
+        // URLを、扱いやすいUri型で組む
+        Uri baseUri = Uri
+                .parse("http://54.92.74.113/sue/FriendDelete.php");
+
+        // パラメータの付与
+        Uri uri = baseUri.buildUpon()
+                .appendQueryParameter("mymail",mymail)
+                .appendQueryParameter("friendmail",friendmail)
+                .build();
+
+        if (mTask == null) {
+            mTask = new AsyncTask<Uri, Void, String>() {
+                /**
+                 * 通信において発生したエラー
+                 */
+                private Throwable mError = null;
+
+                @Override
+                protected String doInBackground(Uri... params) {
+                    Uri uri = params[0];
+                    sendText("\n通信開始\n");
+
+                    String result = request(uri);
+
+                    return result;
+                }
+
+                private String request(Uri uri ) {
+                    java.net.HttpURLConnection http = null;
+                    InputStream is = null;
+                    String result = null;
+                    try {
+                        // URLにHTTP接続
+                        URL url = new URL(uri.toString());
+                        http = (java.net.HttpURLConnection) url.openConnection();
+
+                        http.setConnectTimeout(3000);//接続タイムアウトを設定する。
+                        http.setReadTimeout(3000);//レスポンスデータ読み取りタイムアウトを設定する。
+
+                        http.setRequestMethod("POST");
+                        http.setDoOutput(true);// POSTによるデータ送信を可能
+                        http.setRequestProperty("User-Agent", "@IT java-tips URLConnection");// ヘッダを設定
+                        http.setRequestProperty("Accept-Language", "ja");// ヘッダを設定
+
+                        http.setDoInput(true);//リクエストのボディ送信を許可する
+                        http.setDoOutput(true);//レスポンスのボディ受信を許可する
+
+                        OutputStream os = http.getOutputStream();//POST用のOutputStreamを取得
+
+                        String postStr = "name=";//POSTするデータ
+                        PrintStream ps = new PrintStream(os);
+                        ps.print(postStr);//データをPOSTする
+                        ps.close();
+                        http.connect();
+                        is = http.getInputStream();
+
+                        result = toString(is);
+                        sendText(result);
+                    } catch (MalformedURLException e) {
+                        Log.e(TAG, "通信失敗", e);
+                        sendText(e.toString());
+                    } catch (IOException e) {
+                        Log.e(TAG, "通信失敗", e);
+                        sendText(e.toString());
+                    } finally {
+                        if (http != null) {
+                            http.disconnect();
+                        }
+                        try {
+                            if (is != null) {
+                                is.close();
+                            }
+                        } catch (IOException e) {
+                            Log.e(TAG, "ストリームのクローズ失敗", e);
+                        }
+                    }
+                    return result;
+                }
+
+                private String toString(InputStream is) throws IOException {
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(is, "UTF-8"));
+                    StringBuilder sb = new StringBuilder();
+                    char[] b = new char[1024];
+                    int line;
+                    while (0 <= (line = reader.read(b))) {
+                        sb.append(b, 0, line);
+                    }
+                    return sb.toString();
+                }
+
+                @Override
+                protected void onPostExecute(String result) {
+                    try {
+                        ImageButton button2 = ((ImageButton)fView.findViewWithTag(fmail));
+                        button2.setImageResource(entry_button);
+
+                        mTask = null;
+                    } catch (Exception e) {
+                    }
+
+                }
+
+                @Override
+                protected void onCancelled() {
+                    onCancelled(null);
+                }
+
+                @Override
+                protected void onCancelled(String result) {
+                    sendText("\nonCancelled(String result), result=" + result);
+
+                    mTask = null;
+                }
+            }.execute(uri);
+        } else {
+            // 現在通信のタスクが実行中。重複して実行されないように制御。
+        }
+    }
+
     public void FriendReleaseUpdate(Activity activity, String mymail, String friendmail, View v) {
         mActivity = activity;
         fView = v;
@@ -722,7 +976,7 @@ public class ConnectHttpFriend extends Activity{
                         ImageButton button2 = ((ImageButton)fView.findViewWithTag(fmail));
 
                         if(flag.equals("1")){
-                            button2.setImageResource(release_button);
+                            button2.setImageResource(release_button2);
                         }else{
                             button2.setImageResource(share_button);
                         }
@@ -856,7 +1110,7 @@ public class ConnectHttpFriend extends Activity{
                         ImageButton button2 = ((ImageButton)fView.findViewWithTag(fmail));
 
                         if(flag.equals("1")){
-                            button2.setImageResource(release_button);
+                            button2.setImageResource(release_button2);
                         }else{
                             button2.setImageResource(share_button);
                         }

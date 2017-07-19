@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,11 +48,13 @@ public class FriendActivity  extends AppCompatActivity  {
         TextView textparam = (TextView)findViewById(R.id.friendText);
         ImageButton button2 = (ImageButton)findViewById(R.id.friendGetButton);
         TextView restex = (TextView)findViewById(R.id.resultText);
+        LinearLayout ll = (LinearLayout)findViewById(R.id.ll);
 
         //初期値を非表示
         textparam.setVisibility(View.GONE);
         button2.setVisibility(View.GONE);
         restex.setVisibility(View.GONE);
+        ll.setVisibility(View.GONE);
     }
 
     //リロード
@@ -94,15 +97,24 @@ public class FriendActivity  extends AppCompatActivity  {
         }
     }
 
-    //フレンドの追加、解除
+    //フレンドの追加、解除//listview用
     public void FriendAdd2(View v){
         //Global変数のflagを確認し、友達かどうか判定
         String fmail = (String)((ImageButton)v).getTag();
-        ImageButton button2 = ((ImageButton)v.findViewWithTag(fmail));
 
-        System.out.println("押された場所");
-        //解除の方法をどうするか。消すか残すか
-        button2.setImageResource(entry_button);
+        String hantei = Global.getFriendmap(fmail);
+
+        if(hantei.equals("0")){
+            //追加
+            ConnectHttpFriend postdata = new ConnectHttpFriend();
+            postdata.FriendAdd2(this,mymail,fmail,v);
+            Global.setMapFlag(fmail,"1");
+        }else{
+            //削除
+            ConnectHttpFriend postdata = new ConnectHttpFriend();
+            postdata.FriendDelete2(this,mymail,fmail,v);
+            Global.setMapFlag(fmail,"0");
+        }
     }
 
     //フレンド情報共有設定

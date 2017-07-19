@@ -12,7 +12,6 @@ public class FriendInfo {
     String friendmail;
     String allreleaseflag;
     String scheduleflag;
-    String friendADbtn;
 
     //String profile;
 

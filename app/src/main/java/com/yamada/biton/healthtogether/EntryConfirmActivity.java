@@ -59,28 +59,28 @@ public class EntryConfirmActivity extends AppCompatActivity {
 
         //性別フラグ
         //id取得
-        TextView sexText = (TextView)findViewById(R.id.sexTxt);
+        //TextView sexText = (TextView)findViewById(R.id.sexTxt);
         //数値セット
-        setSex = intent.getIntExtra("sexdata",0);
-        if (setSex == 1) {
-            sexText.setText("男");
-        }else if(setSex == 0) {
-            sexText.setText("女");
-        }
+        //setSex = intent.getIntExtra("sexdata",0);
+        //if (setSex == 1) {
+        //    sexText.setText("男");
+        //}else if(setSex == 0) {
+        //    sexText.setText("女");
+        //}
 
         //身長
         //id取得
-        TextView heightText = (TextView)findViewById(R.id.entryHeightTxt);
+        //TextView heightText = (TextView)findViewById(R.id.entryHeightTxt);
         //テキストセット
-        setHeight = intent.getStringExtra("heightdata");
-        heightText.setText(String.valueOf(setHeight));
+        //setHeight = intent.getStringExtra("heightdata");
+        //heightText.setText(String.valueOf(setHeight));
 
         //年齢
         //id取得
-        TextView ageText = (TextView)findViewById(R.id.entryAgeTxt);
+        //TextView ageText = (TextView)findViewById(R.id.entryAgeTxt);
         //テキストセット
-        setAge = intent.getStringExtra("agedata");
-        ageText.setText(String.valueOf(setAge));
+        //setAge = intent.getStringExtra("agedata");
+        //ageText.setText(String.valueOf(setAge));
 
         //監視者フラグ
         //id取得

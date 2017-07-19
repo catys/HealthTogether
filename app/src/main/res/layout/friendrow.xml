@@ -1,44 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
     <!-- layout_below,alignStartは後にid設定を行う -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="friend-mail"
-        android:id="@+id/friendmail"
-        android:layout_below="@+id/name"
-        android:layout_alignStart="@+id/name" />
-
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_width="312dp"
+        android:layout_height="140dp"
+        android:orientation="vertical"
+        android:background="@drawable/text_border"
+        android:layout_gravity="center"
+        android:layout_weight="0.24"
+        android:weightSum="1">
 
-        <ImageButton
-            android:id="@+id/schedule_Button"
-            android:layout_width="56dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="FriendScheduleShare" />
+            android:orientation="horizontal"
+            android:layout_weight="0.56"
+            android:weightSum="1">
 
-        <ImageButton
-            android:id="@+id/info_Button"
-            android:layout_width="56dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="FriendInfoShare" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="59dp"
+                android:layout_height="78dp"
+                app:srcCompat="@android:drawable/sym_def_app_icon"
+                android:layout_weight="0.55" />
 
-        <ImageButton
-            android:id="@+id/friendAD"
-            android:layout_width="56dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="FriendAdd2"
-            />
+            <TextView
+                android:id="@+id/friendmail"
+                android:layout_width="134dp"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/name"
+                android:layout_below="@+id/name"
+                android:layout_gravity="center"
+                android:text="friend-mail"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/friendAD"
+                android:layout_width="78dp"
+                android:layout_height="wrap_content"
+                android:onClick="FriendAdd2"
+                android:background="@drawable/image_button_bg"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="20dp">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="9dp"
+                android:text="スケジュール共有"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="9dp"
+                android:text="体組成情報共有"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_weight="0.46">
+
+            <ImageButton
+                android:id="@+id/schedule_Button"
+                android:layout_width="56dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="4dp"
+                android:onClick="FriendScheduleShare"
+                android:background="@drawable/image_button_bg"
+                android:layout_gravity="center"/>
+
+            <ImageButton
+                android:id="@+id/info_Button"
+                android:layout_width="56dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="4dp"
+                android:onClick="FriendInfoShare"
+                android:background="@drawable/image_button_bg"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

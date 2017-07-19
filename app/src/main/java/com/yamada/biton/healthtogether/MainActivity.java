@@ -22,10 +22,10 @@ public class MainActivity extends AppCompatActivity {
 
         //グラフ非同期
         ////////////////////////////
-        ConnectHttpVital postdata = new ConnectHttpVital();
-        postdata.MeasurementHistorySelect(this,mymail);
-        ConnectHttpVital postdata1 = new ConnectHttpVital();
-        postdata1.Totalvital(this,mymail);
+        //ConnectHttpVital postdata = new ConnectHttpVital();
+        //postdata.MeasurementHistorySelect(this,mymail);
+        //ConnectHttpVital postdata1 = new ConnectHttpVital();
+        //postdata1.Totalvital(this,mymail);
     }
 
     public void FriendClick(View v){
@@ -38,10 +38,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void UserClick(View v){
+    public void UserClick(View v) {
         Intent intent = new Intent(MainActivity.this, UserActivity.class);
-    public void MeasurementHistoryClick(View v){
-        Intent intent = new Intent(MainActivity.this, MeasurementHistoryActivity.class);
         startActivity(intent);
     }
+
+    //public void MeasurementHistoryClick(View v){
+    //    Intent intent = new Intent(MainActivity.this, MeasurementHistoryActivity.class);
+    //    startActivity(intent);
+    //}
 }

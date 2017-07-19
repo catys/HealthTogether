@@ -3,7 +3,9 @@ package com.yamada.biton.healthtogether;
 import android.app.Application;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 優太 on 2017/06/28.
@@ -17,6 +19,8 @@ public class Global extends Application {
 
     //フレンド関係/////////////////////////////////////
     static int flag;
+    // Map<Keyの型, 値の型>となる。
+    static Map<String, String> friendmap = new HashMap<String, String>(); // 連想配列に格納
 
     public static void setFlag(int i){
         flag = i;
@@ -24,6 +28,17 @@ public class Global extends Application {
 
     public static int getFlag(){
         return flag;
+    }
+
+    public static void setMapFlag(String mail,String val){
+        // データを連想配列に格納
+        friendmap.put(mail, val);
+    }
+
+    public static String getFriendmap(String mail){
+        // 連想配列からデータを取得
+        String str = friendmap.get(mail);
+        return str;
     }
 
     ////////////////////////////////////////////////////

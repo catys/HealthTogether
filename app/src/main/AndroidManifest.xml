@@ -51,19 +51,6 @@
         android:name=".UserEditActivity"
         android:label="@string/app_name">
     </activity>
-
-            android:label="@string/app_name" />
-
-        <activity android:name=".EntryActivity" />
-        <activity android:name=".EntryConfirmActivity" />
-        <activity android:name=".UserActivity" />
-        <activity android:name=".UserEditActivity"
-                    android:label="@string/app_name">
-        </activity>
-        <activity
-            android:name=".MeasurementHistoryActivity"
-            android:label="@string/app_name">
-        </activity>
     </application>
 
 </manifest>

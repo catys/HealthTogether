@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import static com.yamada.biton.healthtogether.R.drawable.entry_button;
 import static com.yamada.biton.healthtogether.R.drawable.release_button;
+import static com.yamada.biton.healthtogether.R.drawable.release_button2;
 import static com.yamada.biton.healthtogether.R.drawable.share_button;
 
 /**
@@ -66,7 +67,7 @@ public class FriendAdapter extends BaseAdapter {
         //情報共有
         String hantei = friendList.get(position).getAllreleaseflag();
         if(hantei.equals("1")){
-            ((ImageButton) convertView.findViewById(R.id.info_Button)).setImageResource(release_button);
+            ((ImageButton) convertView.findViewById(R.id.info_Button)).setImageResource(release_button2);
         }else{
             ((ImageButton) convertView.findViewById(R.id.info_Button)).setImageResource(share_button);
         }
@@ -74,13 +75,14 @@ public class FriendAdapter extends BaseAdapter {
         //スケジュール公開
         String hantei2 = friendList.get(position).getScheduleflag();
         if(hantei2.equals("1")){
-            ((ImageButton) convertView.findViewById(R.id.schedule_Button)).setImageResource(release_button);
+            ((ImageButton) convertView.findViewById(R.id.schedule_Button)).setImageResource(release_button2);
         }else{
             ((ImageButton) convertView.findViewById(R.id.schedule_Button)).setImageResource(share_button);
         }
 
         //友達
         ((ImageButton) convertView.findViewById(R.id.friendAD)).setImageResource(release_button);
+        Global.setMapFlag(friendList.get(position).getFriendmail(),"1");
 
         return convertView;
     }
