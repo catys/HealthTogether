@@ -1,11 +1,12 @@
 package com.yamada.biton.healthtogether;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
@@ -41,7 +42,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-public class MeasurementHistoryActivity extends Activity {
+public class MeasurementHistoryActivity extends AppCompatActivity {
     private LinearLayout chartlayout;
     private LinearLayout chartlayout1;
     private final int HALF_DAY = 12 * 3600 * 1000;
@@ -86,12 +87,9 @@ public class MeasurementHistoryActivity extends Activity {
 
         float ttotal=Global.gettotal();
         TextView textparam = (TextView)findViewById(R.id.vitaltext1);
-        if(ttotal>0.0) {
+        textparam.setRawInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
             // テキストを設定
-            textparam.setText("あなたはトータル" + ttotal + "kgです");
-        }else{
-            textparam.setText("あなたはトータル" + ttotal + "kgです");
-        }
+            textparam.setText("あなたのトータルは\n"+ ttotal + "kgです");
         //handler.postDelayed(updateRunnable, 0);
         progressDialog.dismiss();
     }
@@ -147,6 +145,11 @@ public class MeasurementHistoryActivity extends Activity {
                     System.out.println(count);
                 }
             }
+        ddData[0] = ddData[0].substring(5, 10);
+        ddData[count-1] = ddData[count-1].substring(5, 10);
+        TextView textparam1 = (TextView)findViewById(R.id.datetext);
+        textparam1.setText(ddData[0] +"～"+ddData[count-1]);
+        // テキストを設定
 /*
         int DataCountTarget=xStrValueTarget.length;
         Date[] xDateValueTarget = new Date[DataCountTarget];
@@ -159,13 +162,15 @@ public class MeasurementHistoryActivity extends Activity {
 XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
         renderer.setChartTitle("体重");     // グラフタイトル
                 renderer.setChartTitleTextSize(30);             //
-                renderer.setXTitle("日付");                     // X軸タイトル
-                renderer.setYTitle("体重(Kg)");                     // Y軸タイトル
+                renderer.setXTitle("");                     // X軸タイトル
+                renderer.setYTitle("");                     // Y軸タイトル
                 renderer.setAxisTitleTextSize(25);              //
                 renderer.setLegendTextSize(25);                 // 凡例　テキストサイズ
                 renderer.setPointSize(7f);                      // ポイントマーカーサイズ
                 renderer.setXAxisMin(xDateValue[0].getTime() - HALF_DAY);  // X軸最小値
                 renderer.setXAxisMax(xDateValue[count - 1].getTime() + HALF_DAY);    // X軸最大値
+
+
                //平均値出したい
                 renderer.setYAxisMin(60.0f);                    // Y軸最小値
                 renderer.setYAxisMax(72.0f);                    // Y軸最大値
@@ -185,7 +190,7 @@ XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
                 // グリッド色
                 renderer.setGridColor(Color.parseColor("#808080")); // グリッドカラー
                 // グラフ描画領域マージン top, left, bottom, right
-                renderer.setMargins(new int[]{40, 100, 15, 40});  //
+                renderer.setMargins(new int[]{40, 60, 60, 40});  //
                 // 凡例非表示
                  renderer.setShowLegend(false);
 
