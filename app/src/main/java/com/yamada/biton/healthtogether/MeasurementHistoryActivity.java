@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.view.Menu;
@@ -50,6 +49,10 @@ public class MeasurementHistoryActivity extends AppCompatActivity {
 
     private float[] vData;
     private String[] ddData;
+    private String month;
+    private String month1;
+    private String day;
+    private String day1;
     private int Range = 50;
     private int lineWidth;
     private int barWidth;
@@ -118,19 +121,27 @@ public class MeasurementHistoryActivity extends AppCompatActivity {
         // (1)グラフデータの準備
         // X軸 日付
         ddData = Global.getdate();
-        //OK
-        //String [] xStrValue={ "2015-12-22","2015-12-21","2015-12-20","2015-12-19","2015-12-18"};
-        //NO
+
         String [] xStrValue=ddData;
-        //String [] xStrValue = ddData;
+
         // Y軸 体重
         vData = Global.getvital();
         float[] yDoubleValue = vData;
-        //float[] yDoubleValue = {(float) 71.2, (float) 71.8, (float) 70.8, (float) 70.4};
-        // X軸 日付
-        //String [] xStrValueTarget={ "2015/12/22","2015/12/21","2015/12/20","2015/12/19", "2015/12/18"};
-        // Y軸 目標体重
-        //double[] yDoubleValueTarget={ 70.3, 70.3, 70.3, 70.3, 70.3 };
+
+        //MAX MIN
+        float max = vData[0];	//とりあえず最大値をn[0]に設定して変数maxに代入
+        float min = vData[0];	//とりあえず最小値をn[0]に設定して変数minに代入
+        for (int i=0; i<vData.length; i++) {
+            if( vData[i]!=0.0) {
+                if (max < vData[i]) {    //現在の最大値よりも大きい値が出たら
+                    max = vData[i];    //変数maxに値を入れ替える
+                }
+                if (min > vData[i]) {    //現在の最小値よりも小さい値が出たら
+                    min = vData[i];    //変数minに値を入れ替える
+                }
+            }
+        }
+
 
         // 日付を文字形式から Date型へ変換
         int DataCount = xStrValue.length;
@@ -143,23 +154,31 @@ public class MeasurementHistoryActivity extends AppCompatActivity {
                     System.out.println(count);
                 }
             }
+
+
+        // テキストを設定
+        month= ddData[0].substring(5, 7);
+        day = ddData[0].substring(8, 10);
+        month1= ddData[count-1].substring(5, 7);
+        day1= ddData[count-1].substring(8, 10);
+        TextView textparam1 = (TextView)findViewById(R.id.datetext);
+        textparam1.setText(month+"月"+ day +"日"+" ～ "+ month1 +"月"+ day1 +"日");
+
+
+/*
+        // テキストを設定
         ddData[0] = ddData[0].substring(5, 10);
         ddData[count-1] = ddData[count-1].substring(5, 10);
         TextView textparam1 = (TextView)findViewById(R.id.datetext);
-        textparam1.setText(ddData[0] +"～"+ddData[count-1]);
-        // テキストを設定
-/*
-        int DataCountTarget=xStrValueTarget.length;
-        Date[] xDateValueTarget = new Date[DataCountTarget];
-        for (int i = 0; i < DataCountTarget; i++) {
-            xDateValueTarget[i] =String2date(xStrValueTarget[i]);
-        }
+        textparam1.setText(ddData[0] +" ～ "+ddData[count-1]);
 */
+
 
 // (2) グラフのタイトル、X軸Y軸ラベル、色等の設定
 XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
         renderer.setChartTitle("体重");     // グラフタイトル
-                renderer.setChartTitleTextSize(30);             //
+
+                renderer.setChartTitleTextSize(50);             //
                 renderer.setXTitle("");                     // X軸タイトル
                 renderer.setYTitle("");                     // Y軸タイトル
                 renderer.setAxisTitleTextSize(25);              //
@@ -170,8 +189,8 @@ XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
 
 
                //平均値出したい
-                renderer.setYAxisMin(60.0f);                    // Y軸最小値
-                renderer.setYAxisMax(72.0f);                    // Y軸最大値
+                renderer.setYAxisMin(min-5);                    // Y軸最小値
+                renderer.setYAxisMax(max+5);                    // Y軸最大値
 
                 renderer.setXLabelsAlign(Paint.Align.CENTER);         // X軸ラベル配置位置
                 renderer.setYLabelsAlign(Paint.Align.RIGHT);          // Y軸ラベル配置位置
@@ -186,9 +205,9 @@ XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
                 // グリッド表示
                 renderer.setShowGrid(true);
                 // グリッド色
-                renderer.setGridColor(Color.parseColor("#808080")); // グリッドカラー
+                renderer.setGridColor(Color.parseColor("#000000")); // グリッドカラー
                 // グラフ描画領域マージン top, left, bottom, right
-                renderer.setMargins(new int[]{40, 60, 60, 40});  //
+                renderer.setMargins(new int[]{100, 60, 60, 60});  //
                 // 凡例非表示
                  renderer.setShowLegend(false);
 
@@ -202,14 +221,6 @@ XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
                 r1.setLineWidth(5f);
                 r1.setFillPoints(true);
                 renderer.addSeriesRenderer(r1);
-        /*
-        XYSeriesRenderer r2 = new XYSeriesRenderer();
-        r2.setColor(Color.rgb(255, 0, 0));
-        r2.setPointStyle(PointStyle.SQUARE);
-        r2.setLineWidth(5f);
-        r2.setFillPoints(true);
-        renderer.addSeriesRenderer(r2);
-*/
 
 
                 // (4) データ系列　データの設定 (体重)
@@ -222,13 +233,6 @@ XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
                 }
         dataset.addSeries(series1);
 
-       /* // (4) データ系列　データの設定 (目標値)
-        TimeSeries seriesTarget = new TimeSeries("目標値");     //
-        for (int i = 0; i < DataCountTarget; i++) {
-            seriesTarget.add(xDateValueTarget[i], yDoubleValueTarget[i]);
-        }
-        dataset.addSeries(seriesTarget);
-*/
 
         // (5)タイムチャートグラフの作成
         GraphicalView mChartView = ChartFactory.getTimeChartView(this, dataset, renderer, "M/d");
@@ -255,7 +259,7 @@ private Date String2date(String strDate) {
         }
 
 
-
+/*
 private double addX = 0;
 public int plus = 0;
 private double minus = 0;
@@ -281,197 +285,7 @@ public void run() {
         }
         }
         };
+        */
 
         }
 
-
-        /*
-        System.out.println("とれてる？");
-            System.out.println(dData[0]);
-
-
-
-        String[] titles = new String[] { "体重" };
-        List<float[]> x = new ArrayList<float[]>();
-        for (int i = 0; i < titles.length; i++) {
-            x.add(new float[] { });
-        }
-        List<float[]> values = new ArrayList<float[]>();
-        values.add(new float[] {0});
-        values.add(new float[] {0});
-        int[] colors = new int[] { Color.MAGENTA };
-        PointStyle[] styles = new PointStyle[] { PointStyle.CIRCLE, PointStyle.DIAMOND };
-        XYMultipleSeriesRenderer renderer = buildRenderer(colors, styles);
-        int length = renderer.getSeriesRendererCount();
-        for (int i = 0; i < length; i++) {
-            ((XYSeriesRenderer) renderer.getSeriesRendererAt(i))
-                    .setFillPoints(true);
-        }
-        setChartSettings(renderer, "体重", " ",
-                " ", 1, 7, 40, 100, Color.BLACK, Color.BLACK);
-        renderer.setXLabels(10);
-        renderer.setYLabels(5);
-        renderer.setMarginsColor(Color.argb(0x00, 0xff, 0x00, 0x00));
-        // グリッド表示
-        renderer.setShowGrid(true);
-        // グリッド色
-        renderer.setGridColor(Color.BLACK);
-        // 凡例非表示
-        renderer.setShowLegend(false);
-        // マージンを凡例にフィットさせる
-        renderer.setFitLegend(true);
-        renderer.setXLabelsAlign(Paint.Align.RIGHT);
-        renderer.setYLabelsAlign(Paint.Align.RIGHT);
-        renderer.setZoomButtonsVisible(false);
-        renderer.setPanLimits(new double[] { 0, 50, 0, 100 });
-        renderer.setZoomLimits(new double[] { 0, 50, 0, 100 });
-
-        dataset = buildDataset(titles, x, values);
-
-        graphicalView = ChartFactory.getLineChartView(
-                getApplicationContext(), dataset, renderer);
-
-        LinearLayout cHartEngineLayout = (LinearLayout) findViewById(R.id.chart1);
-        cHartEngineLayout.addView(graphicalView);
-        chartlayout = (LinearLayout) findViewById(R.id.chart1);
-        chartlayout.removeAllViews();
-        chartlayout.addView(graphicalView);
-
-        handler.postDelayed(updateRunnable, 0);
-    }
-
-
-
-    private XYMultipleSeriesDataset buildDataset(String[] titles,
-                                                 List<float[]> xValues, List<float[]> yValues) {
-        XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
-        addXYSeries(dataset, titles, xValues, yValues, 0);
-        return dataset;
-    }
-
-    private void addXYSeries(XYMultipleSeriesDataset dataset, String[] titles,
-                             List<float[]> xValues, List<float[]> yValues, int scale) {
-        int length = titles.length;
-        for (int i = 0; i < length; i++) {
-            XYSeries series = new XYSeries(titles[i], scale);
-            float[] xV = xValues.get(i);
-            float[] yV = yValues.get(i);
-            int seriesLength = xV.length;
-            for (int k = 0; k < seriesLength; k++) {
-                series.add(xV[k], yV[k]);
-            }
-            dataset.addSeries(series);
-        }
-    }
-
-    private XYMultipleSeriesRenderer buildRenderer(int[] colors,
-                                                   PointStyle[] styles) {
-        XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
-        setRenderer(renderer, colors, styles);
-        return renderer;
-    }
-
-    private void setRenderer(XYMultipleSeriesRenderer renderer, int[] colors,
-                             PointStyle[] styles) {
-        renderer.setAxisTitleTextSize(30);
-        renderer.setChartTitleTextSize(30);
-        renderer.setLabelsTextSize(30);
-        renderer.setLegendTextSize(15);
-        renderer.setPointSize(7f);
-        renderer.setMargins(new int[] { 50, 50, 25, 25 });
-        int length = colors.length;
-        for (int i = 0; i < length; i++) {
-            XYSeriesRenderer r = new XYSeriesRenderer();
-            r.setColor(colors[i]);
-            r.setPointStyle(styles[i]);
-            renderer.addSeriesRenderer(r);
-        }
-    }
-//グラフの背景
-    private void setChartSettings(XYMultipleSeriesRenderer renderer,
-                                  String title, String xTitle, String yTitle, double xMin,
-                                  double xMax, double yMin, double yMax, int axesColor,
-                                  int labelsColor) {
-        renderer.setChartTitle(title);
-        renderer.setXTitle(xTitle);
-        renderer.setYTitle(yTitle);
-        renderer.setXAxisMin(xMin);
-        renderer.setXAxisMax(xMax);
-        renderer.setYAxisMin(yMin);
-        renderer.setYAxisMax(yMax);
-        renderer.setAxesColor(axesColor);
-        renderer.setLabelsColor(labelsColor);
-    }
-
-
-    private  float[] vData;
-    private  String[] dData;
-    private double addX = 1;
-    public int plus = 0;
-    private double minus = 0;
-
-    private Handler handler = new Handler();
-    private Runnable updateRunnable = new Runnable() {
-        String mymail = "a@gmail.com";
-
-        @Override
-        public void run() {
-            try {
-                vData = new float[30];
-                if(Global.getvital() != null) {
-                    vData = Global.getvital();
-                    //dData = Global.getdate();
-                }
-
-                    if (vData.length != 0 && plus != -1) {
-                        if(minus != 0) {
-                            dataset.getSeriesAt(0).add(addX, vData[plus]);
-
-                            addX++;
-                            plus++;
-                        }
-
-
-                        minus++;
-                        graphicalView.repaint();
-                    }
-                if( vData[plus] == 0.0){
-                    float ttotal=Global.gettotal();
-                    TextView textparam = (TextView)findViewById(R.id.vitaltext1);
-                    if(ttotal>0.0) {
-                        // テキストを設定
-                        textparam.setText("あなたはトータル" + ttotal + "kgです");
-                    }else{
-                        textparam.setText("あなたはトータル" + ttotal + "kgです");
-                    }
-                    progressDialog.dismiss();
-
-                }else  if (addX < vData.length ) {
-                    handler.postDelayed(updateRunnable, 100);
-                } else {
-                    dataset.getSeriesAt(0).clear();
-                    TextView textparam = (TextView)findViewById(R.id.vitaltext1);
-
-                    // テキストを設定
-                    textparam.setText("例外が発生しました。");
-                    progressDialog.dismiss();
-                }
-            }catch (Exception e){
-                    System.out.println("例外が発生しました。");
-                }
-    }
-};
-
-
-
-}
-*/
-
-/*
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_measurementhistory);
-
-
- */

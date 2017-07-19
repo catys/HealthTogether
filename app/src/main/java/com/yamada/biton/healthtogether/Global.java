@@ -137,27 +137,20 @@ public class Global extends Application {
 
     public static void settotal(float Tvital) {
         tvital = Tvital;
-        System.out.println("settotal");
-        System.out.println(tvital);
+
     }
 
     public static float gettotal() {
-        System.out.println("gettotal");
-        System.out.println(tvital);
+
         return tvital;
     }
 
     public static void setdate(String[] ddata) {
         dData = ddata;
-        for (int j = 0; dData.length>j ;j++) {
-            System.out.println("setdate");
-            System.out.println(dData[j]);
 
-        }
     }
     public static String[] getdate() {
-        System.out.println("getdate");
-        System.out.println(dData[0]);
+
         return dData;
 
     }
