@@ -15,7 +15,7 @@ import com.yamada.biton.healthtogether.AsyncTasksPackage.PostBmpAsyncHttpRequest
 
 public class EntryConfirmActivity extends AppCompatActivity {
 
-    String proURL = "URL",mail = "mymail",pass = "mypass",nick = "mynick",sflg = "mysex",height = "myheight",age = "myage",mflg = "mymonitor";
+    String proURL = "URL",mail = "mymail",pass = "mypass",nick = "mynick",mflg = "mymonitor";
 
     String setMail = "mail",setPass = "pass",setNick = "nick",setHeight = "height",setAge = "age";
     int setMonitor,setSex;
@@ -57,31 +57,6 @@ public class EntryConfirmActivity extends AppCompatActivity {
         setNick = intent.getStringExtra("nickdata");
         nickText.setText(String.valueOf(setNick));
 
- /*       //性別フラグ
-        //id取得
-        //TextView sexText = (TextView)findViewById(R.id.sexTxt);
-        //数値セット
-        //setSex = intent.getIntExtra("sexdata",0);
-        //if (setSex == 1) {
-        //    sexText.setText("男");
-        //}else if(setSex == 0) {
-        //    sexText.setText("女");
-        //}
-
-        //身長
-        //id取得
-        //TextView heightText = (TextView)findViewById(R.id.entryHeightTxt);
-        //テキストセット
-        //setHeight = intent.getStringExtra("heightdata");
-        //heightText.setText(String.valueOf(setHeight));
-
-        //年齢
-        //id取得
-        //TextView ageText = (TextView)findViewById(R.id.entryAgeTxt);
-        //テキストセット
-        //setAge = intent.getStringExtra("agedata");
-        //ageText.setText(String.valueOf(setAge));
-
         //監視者フラグ
         //id取得
         TextView monitorText = (TextView)findViewById(R.id.monitorTxt);
@@ -91,7 +66,7 @@ public class EntryConfirmActivity extends AppCompatActivity {
             monitorText.setText("監視者として登録する");
         }else if(setMonitor == 0) {
             monitorText.setText("監視者として登録しない");
-        }*/
+        }
 
     }
 
@@ -111,23 +86,14 @@ public class EntryConfirmActivity extends AppCompatActivity {
 
         //プロフィール画像
         new PostBmpAsyncHttpRequest(this).execute(new Param("http://54.92.74.113/dataupload.php?mymail=" + mail,bmp));
-        proURL = "http://54.92.74.113/prof/" + mail + ".jpg";
-
-        //監視者フラグ
-        sflg = String.valueOf(dataintent.getIntExtra("sexdata",0));
-
-        //身長
-        height = dataintent.getStringExtra("heightdata");
-
-        //年齢
-        age = dataintent.getStringExtra("agedata");
+        proURL = "pro";//"http://54.92.74.113/prof/" + mail + ".jpg";
 
         //監視者フラグ
         mflg = String.valueOf(dataintent.getIntExtra("monitordata",0));
 
         //phpへとデータを送信
         ConnectHttpUser postdata = new ConnectHttpUser();
-        postdata.UserInsert(this,mail,pass,nick,proURL,sflg,height,age,mflg);
+        postdata.UserInsert(this,mail,pass,nick,proURL,mflg);
 
         //SQLiteのdatabaseに格納
         MyOpenHelper helper = new MyOpenHelper(this);

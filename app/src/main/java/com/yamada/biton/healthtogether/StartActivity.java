@@ -1,6 +1,7 @@
 package com.yamada.biton.healthtogether;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,18 +13,21 @@ import android.widget.Button;
 
 public class StartActivity extends AppCompatActivity {
 
-        private final static int SPLASH_TIME = 1500;
+        private final static int SPLASH_TIME = 3000;
 
         @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+            Button start = (Button)findViewById(R.id.startbutton);
 
+            start.setVisibility(View.INVISIBLE);
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     Button start = (Button)findViewById(R.id.startbutton);
-//ボタン表示
+
+                    start.setVisibility(View.VISIBLE);
                 }
             }, SPLASH_TIME);
 
@@ -31,11 +35,6 @@ public class StartActivity extends AppCompatActivity {
 
     public void StartClick(View v){
 
-        Intent intent = new Intent(StartActivity.this, MainActivity.class);
-        startActivity(intent);
-
-
-/*登録画面のやつ
         MyOpenHelper helper = new MyOpenHelper(this);
         SQLiteDatabase db = helper.getReadableDatabase();
 
@@ -47,7 +46,7 @@ public class StartActivity extends AppCompatActivity {
 
         //内部DBなかったら登録画面へ遷移
         if(mov == false){
-            Intent intent = new Intent(Activity.this, EntryActivity.class);
+            Intent intent = new Intent(this, EntryActivity.class);
             startActivity(intent);
         }
 
@@ -67,8 +66,6 @@ public class StartActivity extends AppCompatActivity {
         //DB切断
         c.close();
         db.close();
-        */
-
     }
 
     //内部DB削除

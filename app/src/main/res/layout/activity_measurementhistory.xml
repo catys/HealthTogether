@@ -32,6 +32,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/sokutei3"
+    android:layout_marginTop="45dp"
     android:weightSum="1">
 
     

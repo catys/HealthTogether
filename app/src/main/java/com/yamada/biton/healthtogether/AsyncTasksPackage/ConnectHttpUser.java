@@ -47,7 +47,7 @@ public class ConnectHttpUser extends Activity {
     }
 
     //個人情報登録
-    public void UserInsert(Activity activity, String mailaddress,String password,String nickname,String profileURL,String sexflag,String height,String age,String monitorflag) {
+    public void UserInsert(Activity activity, String mailaddress,String password,String nickname,String profileURL,String monitorflag) {
         mActivity = activity;
 
         // URLを、扱いやすいUri型で組む

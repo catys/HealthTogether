@@ -1,31 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yamada.biton.healthtogether.StartActivity">
+    android:background="@drawable/splash"
+    tools:context="com.yamada.biton.healthtogether.StartActivity"
+    android:weightSum="1">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_marginBottom="40dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/startbutton"
-            android:layout_width="189dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="StartClick"
-            android:text="Button" />
+            android:orientation="horizontal"
+            android:layout_marginTop="350dp">
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="DeleteClick"
-            android:text="Delete" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="131dp"
+            android:layout_weight="0.15"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:gravity="center|bottom">
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="DeleteClick"
+                android:text="Button" />
+
+            <Button
+                android:id="@+id/startbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:onClick="StartClick"
+                android:text="Start"
+                android:textColor="#ffaaaa"
+                android:textSize="25dp"/>
+        </LinearLayout>
     </LinearLayout>
 
+</LinearLayout>
 
-</RelativeLayout>

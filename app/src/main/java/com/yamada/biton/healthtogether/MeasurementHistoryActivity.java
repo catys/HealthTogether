@@ -95,8 +95,7 @@ public class MeasurementHistoryActivity extends AppCompatActivity implements Nav
 
         // NavigationView Listener
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigationView);
-//        navigationView.setNavigationItemSelectedListener(this);
-
+        navigationView.setNavigationItemSelectedListener(this);
 
         //プログレスバー
         progressDialog = new ProgressDialog(this);
@@ -114,8 +113,8 @@ public class MeasurementHistoryActivity extends AppCompatActivity implements Nav
         float ttotal=Global.gettotal();
         TextView textparam = (TextView)findViewById(R.id.vitaltext1);
         textparam.setRawInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
-            // テキストを設定
-            textparam.setText("あなたのトータルは\n"+ ttotal + "kgです");
+        // テキストを設定
+        textparam.setText("あなたのトータルは\n"+ ttotal + "kgです");
         //handler.postDelayed(updateRunnable, 0);
         progressDialog.dismiss();
     }
@@ -172,13 +171,13 @@ public class MeasurementHistoryActivity extends AppCompatActivity implements Nav
         int DataCount = xStrValue.length;
         Date[] xDateValue = new Date[DataCount];
 
-            for (int i = 0; i < DataCount; i++) {
-                if(xStrValue[i] != null) {
+        for (int i = 0; i < DataCount; i++) {
+            if(xStrValue[i] != null) {
                 xDateValue[i] = String2date(xStrValue[i]);
-                    count = i+1;
-                    System.out.println(count);
-                }
+                count = i+1;
+                System.out.println(count);
             }
+        }
 
 
         // テキストを設定
@@ -200,62 +199,62 @@ public class MeasurementHistoryActivity extends AppCompatActivity implements Nav
 
 
 // (2) グラフのタイトル、X軸Y軸ラベル、色等の設定
-XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
+        XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
         renderer.setChartTitle("体重");     // グラフタイトル
 
-                renderer.setChartTitleTextSize(50);             //
-                renderer.setXTitle("");                     // X軸タイトル
-                renderer.setYTitle("");                     // Y軸タイトル
-                renderer.setAxisTitleTextSize(25);              //
-                renderer.setLegendTextSize(25);                 // 凡例　テキストサイズ
-                renderer.setPointSize(7f);                      // ポイントマーカーサイズ
-                renderer.setXAxisMin(xDateValue[0].getTime() - HALF_DAY);  // X軸最小値
-                renderer.setXAxisMax(xDateValue[count - 1].getTime() + HALF_DAY);    // X軸最大値
+        renderer.setChartTitleTextSize(50);             //
+        renderer.setXTitle("");                     // X軸タイトル
+        renderer.setYTitle("");                     // Y軸タイトル
+        renderer.setAxisTitleTextSize(25);              //
+        renderer.setLegendTextSize(25);                 // 凡例　テキストサイズ
+        renderer.setPointSize(7f);                      // ポイントマーカーサイズ
+        renderer.setXAxisMin(xDateValue[0].getTime() - HALF_DAY);  // X軸最小値
+        renderer.setXAxisMax(xDateValue[count - 1].getTime() + HALF_DAY);    // X軸最大値
 
 
-               //平均値出したい
-                renderer.setYAxisMin(min-5);                    // Y軸最小値
-                renderer.setYAxisMax(max+5);                    // Y軸最大値
+        //平均値出したい
+        renderer.setYAxisMin(min-5);                    // Y軸最小値
+        renderer.setYAxisMax(max+5);                    // Y軸最大値
 
-                renderer.setXLabelsAlign(Paint.Align.CENTER);         // X軸ラベル配置位置
-                renderer.setYLabelsAlign(Paint.Align.RIGHT);          // Y軸ラベル配置位置
-                renderer.setAxesColor(Color.BLACK);            // X軸、Y軸カラー
-                renderer.setLabelsColor(Color.BLACK);          // ラベルカラー
-                renderer.setXLabelsColor(Color.BLACK);
-                renderer.setYLabelsColor(0, Color.BLACK);
-                renderer.setXLabels(5);                         // X軸ラベルのおおよその数
-                renderer.setYLabels(5);                         // Y軸ラベルのおおよその数
-                renderer.setLabelsTextSize(25);
-                renderer.setMarginsColor(Color.argb(0x00, 0xff, 0x00, 0x00));// ラベルサイズ
-                // グリッド表示
-                renderer.setShowGrid(true);
-                // グリッド色
-                renderer.setGridColor(Color.parseColor("#000000")); // グリッドカラー
-                // グラフ描画領域マージン top, left, bottom, right
-                renderer.setMargins(new int[]{100, 60, 60, 60});  //
-                // 凡例非表示
-                 renderer.setShowLegend(false);
+        renderer.setXLabelsAlign(Paint.Align.CENTER);         // X軸ラベル配置位置
+        renderer.setYLabelsAlign(Paint.Align.RIGHT);          // Y軸ラベル配置位置
+        renderer.setAxesColor(Color.BLACK);            // X軸、Y軸カラー
+        renderer.setLabelsColor(Color.BLACK);          // ラベルカラー
+        renderer.setXLabelsColor(Color.BLACK);
+        renderer.setYLabelsColor(0, Color.BLACK);
+        renderer.setXLabels(5);                         // X軸ラベルのおおよその数
+        renderer.setYLabels(5);                         // Y軸ラベルのおおよその数
+        renderer.setLabelsTextSize(25);
+        renderer.setMarginsColor(Color.argb(0x00, 0xff, 0x00, 0x00));// ラベルサイズ
+        // グリッド表示
+        renderer.setShowGrid(true);
+        // グリッド色
+        renderer.setGridColor(Color.parseColor("#000000")); // グリッドカラー
+        // グラフ描画領域マージン top, left, bottom, right
+        renderer.setMargins(new int[]{100, 60, 60, 60});  //
+        // 凡例非表示
+        renderer.setShowLegend(false);
 
-                // マージンを凡例にフィットさせる
-                renderer.setFitLegend(true);
+        // マージンを凡例にフィットさせる
+        renderer.setFitLegend(true);
 
-                // (3) データ系列の色、マーク等の設定
-                XYSeriesRenderer r1 = new XYSeriesRenderer();
-                r1.setColor(Color.rgb(255, 170, 170));
-                r1.setPointStyle(PointStyle.CIRCLE);
-                r1.setLineWidth(5f);
-                r1.setFillPoints(true);
-                renderer.addSeriesRenderer(r1);
+        // (3) データ系列の色、マーク等の設定
+        XYSeriesRenderer r1 = new XYSeriesRenderer();
+        r1.setColor(Color.rgb(255, 170, 170));
+        r1.setPointStyle(PointStyle.CIRCLE);
+        r1.setLineWidth(5f);
+        r1.setFillPoints(true);
+        renderer.addSeriesRenderer(r1);
 
 
-                // (4) データ系列　データの設定 (体重)
-                XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
-                TimeSeries series1 = new TimeSeries("体重");     // データ系列凡例
-                for (int i = 0; i < count; i++) {
+        // (4) データ系列　データの設定 (体重)
+        XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
+        TimeSeries series1 = new TimeSeries("体重");     // データ系列凡例
+        for (int i = 0; i < count; i++) {
 
-                series1.add(xDateValue[i], yDoubleValue[i]);
+            series1.add(xDateValue[i], yDoubleValue[i]);
 
-                }
+        }
         dataset.addSeries(series1);
 
 
@@ -264,24 +263,56 @@ XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
 
         return mChartView;
 
-        }
+    }
 
     /*
  * 日付時刻文字列を Date型に変換
  */
 
-private Date String2date(String strDate) {
+    private Date String2date(String strDate) {
         Date dateDate = null;
         // 日付文字列→date型変換フォーマットを指定して
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
 
         try {
-        dateDate = sdf1.parse(strDate);
+            dateDate = sdf1.parse(strDate);
         } catch (ParseException e) {
-        Toast.makeText(this, "正しい日付を入力して下さい", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "正しい日付を入力して下さい", Toast.LENGTH_SHORT).show();
         }
         return dateDate;
+    }
+
+
+/*
+private double addX = 0;
+public int plus = 0;
+private double minus = 0;
+
+private Handler handler = new Handler();
+private Runnable updateRunnable = new Runnable() {
+        String mymail = "a@gmail.com";
+
+@Override
+public void run() {
+        try {
+
+        if (vData[plus] == 0.0) {
+        progressDialog.dismiss();
+
+        } else if (addX < vData.length) {
+        handler.postDelayed(updateRunnable, 100);
+        } else {
+        progressDialog.dismiss();
         }
+        } catch (Exception e) {
+        System.out.println("例外が発生しました。");
+        }
+        }
+        };
+        */
+
+
+
 
 
     @Override
@@ -291,26 +322,32 @@ private Date String2date(String strDate) {
 
         switch(item.getItemId()){
             case R.id.menu_result:
-                System.out.println("履歴");
+                Intent intent1 = new Intent(this, MainActivity.class);
+                startActivity(intent1);
                 break;
             case R.id.menu_history:
-                System.out.println("履歴");
+                Intent intent2 = new Intent(this, MeasurementHistoryActivity.class);
+                startActivity(intent2);
                 break;
             case R.id.menu_schedule:
-                System.out.println("履歴");
+                Intent intent3 = new Intent(this, ScheduleActivity.class);
+                startActivity(intent3);
                 break;
             case R.id.menu_friend:
-                System.out.println("履歴");
+                Intent intent4 = new Intent(this, FriendActivity.class);
+                startActivity(intent4);
                 break;
             case R.id.menu_ranking:
-                System.out.println("履歴");
+                //Intent intent5 = new Intent(this, Activity.class);
+                //startActivity(intent5);
                 break;
             case R.id.menu_user:
-                Intent intent = new Intent(this, UserActivity.class);
-                startActivity(intent);
+                Intent intent6 = new Intent(this, UserActivity.class);
+                startActivity(intent6);
                 break;
             case R.id.menu_contact:
-                System.out.println("履歴");
+                //Intent intent7 = new Intent(this, UserActivity.class);
+                //startActivity(intent7);
                 break;
         }
 
