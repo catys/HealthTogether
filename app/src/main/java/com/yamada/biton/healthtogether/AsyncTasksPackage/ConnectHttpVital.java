@@ -7,10 +7,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.yamada.biton.healthtogether.Global;
-import com.yamada.biton.healthtogether.R;
 
 import org.achartengine.GraphicalView;
 import org.achartengine.model.XYMultipleSeriesDataset;
@@ -53,7 +51,7 @@ public class ConnectHttpVital  extends Activity {
     private int barWidth;
     private float dpx;
 
-    private int[] xData ;
+    private String[] xData ;
     private float[] yData ;
     public List<String> Allvital = new ArrayList<String>();
 
@@ -180,7 +178,7 @@ public class ConnectHttpVital  extends Activity {
                     try {
                         System.out.println("1");
                         // チャートデータ
-                        xData = new int[Range];
+                        xData = new String[Range];
                         yData = new float[Range];
 
                         List mailaddress = new ArrayList<String>();
@@ -209,12 +207,21 @@ public class ConnectHttpVital  extends Activity {
                             String gbodyweight = data.getString("bodyweight");
                             // 要素を追加
                             bodyweight.add(gbodyweight);*/
+                            String gdate = data.getString("date");
+
+                            if(gdate != null) {
+                                xData[i] =gdate;
+                                System.out.println("日付");
+                                System.out.println(gdate);
+                            }
+
+
                             String gbodyweight = data.getString("bodyweight");
                             yData[i] = Float.parseFloat(gbodyweight);
                             System.out.println(yData[i]);
                         }
                          Global.setvital(yData);
-
+                        Global.setdate(xData);
                         //TextView textView = (TextView) mActivity.findViewById(R.id.friendText);
 
                         //ImageButton button2 = (ImageButton)mActivity.findViewById(R.id.friendGetButton);
@@ -354,12 +361,12 @@ public class ConnectHttpVital  extends Activity {
                         JSONObject json = new JSONObject(result);
                         JSONObject total = json.getJSONObject("data");
                             String totalbodyweight = total.getString("vital");
-                            //float vital = Float.parseFloat(totalbodyweight);
+                            float vital = Float.parseFloat(totalbodyweight);
                         System.out.println("Totalvital");
                             System.out.println(totalbodyweight);
-                        Global.settotal(totalbodyweight);
+                        Global.settotal(vital);
 
-                        TextView textView = (TextView) mActivity.findViewById(R.id.vitaltext1);
+                        //TextView textView = (TextView) mActivity.findViewById(R.id.vitaltext1);
 
                         //ImageButton button2 = (ImageButton)mActivity.findViewById(R.id.friendGetButton);
 
