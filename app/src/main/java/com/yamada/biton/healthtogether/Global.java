@@ -12,6 +12,9 @@ import java.util.Map;
  */
 
 public class Global extends Application {
+
+
+
     @Override
     public void onCreate(){
         super.onCreate();
@@ -132,4 +135,45 @@ public class Global extends Application {
     }
     ///////////////////////////////////////////////////////////////////////
 
+    //グラフ
+    //////////////////////////////////////////
+    private static float tvital;
+    private static float[] vData;
+    private static String[] dData;
+
+    public static void setvital(float[] ydata) {
+        vData = new float[30];
+        vData = ydata;
+    }
+
+    public static float[] getvital() {
+        return vData;
+    }
+
+    public static void settotal(float Tvital) {
+        tvital = Tvital;
+        System.out.println("settotal");
+        System.out.println(tvital);
+    }
+
+    public static float gettotal() {
+        System.out.println("gettotal");
+        System.out.println(tvital);
+        return tvital;
+    }
+
+    public static void setdate(String[] ddata) {
+        dData = ddata;
+        for (int j = 0; dData.length>j ;j++) {
+            System.out.println("setdate");
+            System.out.println(dData[j]);
+
+        }
+    }
+    public static String[] getdate() {
+        System.out.println("getdate");
+        System.out.println(dData[0]);
+        return dData;
+
+    }
 }
