@@ -1,9 +1,5 @@
 package com.yamada.biton.healthtogether.AsyncTasksPackage;
 
-/**
- * Created by Syota-1207 on 2017/07/13.
- */
-
 import android.app.Activity;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -24,6 +20,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+
+import jp.co.omron.healthcare.omoron_connect.wrapper.UserProfileInfo;
+
+//import com.yamada.biton.healthtogether.R;
 
 /**
  * Created by yamaue on 2016/11/13.
@@ -50,7 +50,7 @@ public class vitalinsert extends Activity {
         });
     }
 
-    public void vitalpost(String mymail,ArrayList<Integer> v){
+    public void vitalpost(String mymail,ArrayList<Integer> v,UserProfileInfo info){
 
         // URLを、扱いやすいUri型で組む
         Uri baseUri = Uri
@@ -58,7 +58,7 @@ public class vitalinsert extends Activity {
 //入手データメモ：1,体重 2,体脂肪率 3,基礎代謝 4,骨格筋率 5,BMI 6,体年齢 7,内臓脂肪レベル
         // パラメータの付与
         Uri uri = baseUri.buildUpon()
-                .appendQueryParameter("mymail","testman2")
+                .appendQueryParameter("mymail","omronman")
                 .appendQueryParameter("weight",String.valueOf(v.get(0)))
                 .appendQueryParameter("bodyfat", String.valueOf(v.get(2)))
                 .appendQueryParameter("Basalmetabolism", String.valueOf(v.get(3)))
@@ -66,6 +66,9 @@ public class vitalinsert extends Activity {
                 .appendQueryParameter("BMI", String.valueOf(v.get(5)))
                 .appendQueryParameter("Bodyage", String.valueOf(v.get(6)))
                 .appendQueryParameter("Visceralfat", String.valueOf(v.get(1)))
+                .appendQueryParameter("birth",String.valueOf(info.getBirthday()))
+                .appendQueryParameter("sex",String.valueOf(info.getGender()))
+                .appendQueryParameter("height",String.valueOf(info.getHeight()))
                 .build();
 
         if (mTask == null) {

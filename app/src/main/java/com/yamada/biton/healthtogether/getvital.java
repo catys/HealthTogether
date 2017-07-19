@@ -16,8 +16,11 @@ import java.util.Calendar;
 import java.util.TimeZone;
 
 import jp.co.omron.healthcare.omoron_connect.wrapper.EquipmentInfo;
+import jp.co.omron.healthcare.omoron_connect.wrapper.UserProfileInfo;
 import jp.co.omron.healthcare.omoron_connect.wrapper.VitalData;
 import jp.co.omron.healthcare.omoron_connect.wrapper.WrapperApi;
+
+//import com.yamada.biton.healthtogether.AsyncTasksPackage.vitalinsert;
 
 
 public class getvital extends AppCompatActivity {
@@ -45,10 +48,10 @@ public class getvital extends AppCompatActivity {
         btnGetVitalData.setOnClickListener(button1ClickListener);
 
 
-                    getMetaData = false;
+        getMetaData = false;
 
 
-                    mUseTimeZone = true;
+        mUseTimeZone = true;
 
 
 
@@ -66,12 +69,12 @@ public class getvital extends AppCompatActivity {
 
 
 
-                for (EquipmentInfo equipmentInfo : equipmentInfoList) {
-                    Equipmenttype = equipmentInfo.getDeviceType();
-                    UserID = equipmentInfo.getUserId();
-                    SerialID =equipmentInfo.getSerialId();
+            for (EquipmentInfo equipmentInfo : equipmentInfoList) {
+                Equipmenttype = equipmentInfo.getDeviceType();
+                UserID = equipmentInfo.getUserId();
+                SerialID =equipmentInfo.getSerialId();
 
-                }
+            }
 
             long[] time = getFromToTime();
 
@@ -120,9 +123,9 @@ public class getvital extends AppCompatActivity {
 
                 }
 
-
+                UserProfileInfo info = mWrapperApi.getUserProfile();
                 vitalinsert viin = new vitalinsert();
-                viin.vitalpost("ここにmailaddress",DataList);
+                viin.vitalpost("ここにmailaddress",DataList, info);
                 Toast toast = Toast.makeText(getvital.this,"ボタン押しました",Toast.LENGTH_LONG);
                 toast.show();
             } else {

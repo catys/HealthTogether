@@ -354,10 +354,11 @@ public class ConnectHttpVital  extends Activity {
                         JSONObject json = new JSONObject(result);
                         JSONObject total = json.getJSONObject("data");
                             String totalbodyweight = total.getString("vital");
-                            //float vital = Float.parseFloat(totalbodyweight);
+                            float vital = Float.parseFloat(totalbodyweight);
                         System.out.println("Totalvital");
                             System.out.println(totalbodyweight);
-                        Global.settotal(totalbodyweight);
+
+                        Global.settotal(vital);
 
                         TextView textView = (TextView) mActivity.findViewById(R.id.vitaltext1);
 

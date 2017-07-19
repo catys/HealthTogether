@@ -1,20 +1,31 @@
 package com.yamada.biton.healthtogether;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.ParcelFileDescriptor;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableStringBuilder;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Switch;
 
 import com.yamada.biton.healthtogether.AsyncTasksPackage.ConnectHttpUser;
+
+import java.io.FileDescriptor;
+import java.io.IOException;
 
 public class UserEditActivity extends AppCompatActivity {
 
     String proURL = "URL",mail = "mymail",pass = "mypass",nick = "mynick",height = "myheight",beforemail = "beforemail";
     String bw = "",bf = "",bmi = "",vf = "",sm = "",ba = "",bm = "";
+    private static final int RESULT_PICK_IMAGEFILE = 1000;
+    static public Bitmap bmp =null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +54,15 @@ public class UserEditActivity extends AppCompatActivity {
 
     }
 
+    //プロフ画像クリック
+    public void imgClick (View view) {
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("image/*");
+        startActivityForResult(intent, RESULT_PICK_IMAGEFILE);
+    }
+
+    //編集ボタンクリック
     public void OKClick(View view) {
 
         //編集の値を取得
@@ -175,4 +195,38 @@ public class UserEditActivity extends AppCompatActivity {
         postdata.UserUpdate(this,beforemail,mail,pass,nick,proURL,bw,bf,bmi,vf,sm,ba,bm);
 
     }
+
+    //画像選択後
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent resultData) {
+        if (requestCode == RESULT_PICK_IMAGEFILE && resultCode == RESULT_OK) {
+            Uri uri = null;
+            if (resultData != null) {
+                uri = resultData.getData();
+
+                try {
+                    ImageButton imgbtn = (ImageButton)findViewById(R.id.imgBtn);
+                    bmp = getBitmapFromUri(uri);
+                    imgbtn.setImageBitmap(bmp);
+                    Global global = new Global();
+                    global.setbmp(bmp);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+
+                }
+            }
+        }
+    }
+
+    private Bitmap getBitmapFromUri(Uri uri) throws IOException {
+        ParcelFileDescriptor parcelFileDescriptor =
+                getContentResolver().openFileDescriptor(uri, "r");
+        FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
+        Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
+        parcelFileDescriptor.close();
+        return image;
+    }
+
+
 }

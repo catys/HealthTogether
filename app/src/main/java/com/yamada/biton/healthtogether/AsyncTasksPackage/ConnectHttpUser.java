@@ -61,9 +61,6 @@ public class ConnectHttpUser extends Activity {
                 .appendQueryParameter("password",password)
                 .appendQueryParameter("nickname",nickname)
                 .appendQueryParameter("profileURL",profileURL)
-                .appendQueryParameter("sex",sexflag)
-                .appendQueryParameter("height",height)
-                .appendQueryParameter("age",age)
                 .appendQueryParameter("monitorflag",monitorflag)
                 .build();
 

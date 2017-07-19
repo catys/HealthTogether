@@ -3,18 +3,31 @@ package com.yamada.biton.healthtogether;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 
 //aiueotest
 
 public class StartActivity extends AppCompatActivity {
 
-    @Override
+        private final static int SPLASH_TIME = 1500;
+
+        @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-    }
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Button start = (Button)findViewById(R.id.startbutton);
+//ボタン表示
+                }
+            }, SPLASH_TIME);
+
+        }
 
     public void StartClick(View v){
 
@@ -34,7 +47,7 @@ public class StartActivity extends AppCompatActivity {
 
         //内部DBなかったら登録画面へ遷移
         if(mov == false){
-            Intent intent = new Intent(MainActivity.this, EntryActivity.class);
+            Intent intent = new Intent(Activity.this, EntryActivity.class);
             startActivity(intent);
         }
 
@@ -42,11 +55,11 @@ public class StartActivity extends AppCompatActivity {
         if(mov){
             //測定結果画面遷移
             if (c.getInt(1) == 0) {
-                Intent intent = new Intent(MainActivity.this, UserActivity.class);
+                Intent intent = new Intent(StartActivity.this, MainActivity.class);
                 startActivity(intent);
             } else if(c.getInt(1) == 1) {
                 //監視画面遷移
-                Intent intent = new Intent(MainActivity.this, UserActivity.class);
+                Intent intent = new Intent(StartActivity.this, FriendActivity.class);
                 startActivity(intent);
             }
         }

@@ -57,7 +57,7 @@ public class EntryConfirmActivity extends AppCompatActivity {
         setNick = intent.getStringExtra("nickdata");
         nickText.setText(String.valueOf(setNick));
 
-        //性別フラグ
+ /*       //性別フラグ
         //id取得
         //TextView sexText = (TextView)findViewById(R.id.sexTxt);
         //数値セット
@@ -91,7 +91,7 @@ public class EntryConfirmActivity extends AppCompatActivity {
             monitorText.setText("監視者として登録する");
         }else if(setMonitor == 0) {
             monitorText.setText("監視者として登録しない");
-        }
+        }*/
 
     }
 
@@ -111,7 +111,7 @@ public class EntryConfirmActivity extends AppCompatActivity {
 
         //プロフィール画像
         new PostBmpAsyncHttpRequest(this).execute(new Param("http://54.92.74.113/dataupload.php?mymail=" + mail,bmp));
-        proURL = "http://54.92.74.113/dataupload.php?mymail=" + mail + ".jpg";
+        proURL = "http://54.92.74.113/prof/" + mail + ".jpg";
 
         //監視者フラグ
         sflg = String.valueOf(dataintent.getIntExtra("sexdata",0));

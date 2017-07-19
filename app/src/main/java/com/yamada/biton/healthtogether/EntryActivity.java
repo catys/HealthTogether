@@ -4,15 +4,14 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RadioButton;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
@@ -56,29 +55,6 @@ public class EntryActivity extends AppCompatActivity {
         SpannableStringBuilder sp4 = (SpannableStringBuilder)nick.getText();
         nick1 = sp4.toString();
 
-        //性別
-        RadioButton man = (RadioButton) findViewById(R.id.manRadioBtn);
-        RadioButton woman = (RadioButton) findViewById(R.id.womanRadioBtn);
-        if(man.isChecked() == true){
-            // チェックされた状態の時の処理を記述
-            //男
-            sflg = 1;
-        } else if (woman.isChecked() == true) {
-            // チェックされていない状態の時の処理を記述
-            //女
-            sflg = 0;
-        }
-
-        //身長
-        EditText height = (EditText) findViewById(R.id.heightTxt);
-        SpannableStringBuilder sp5 = (SpannableStringBuilder)height.getText();
-        height1 = sp5.toString();
-
-        //年齢
-        EditText age = (EditText) findViewById(R.id.ageTxt);
-        SpannableStringBuilder sp6 = (SpannableStringBuilder)age.getText();
-        age1 = sp6.toString();
-
         //監視者フラグ
         CheckBox monitor = (CheckBox) findViewById(R.id.monitorChck);
         if(monitor.isChecked() == true){
@@ -93,9 +69,6 @@ public class EntryActivity extends AppCompatActivity {
         intent.putExtra("maildata", mail1);
         intent.putExtra("passdata", pass1);
         intent.putExtra("nickdata", nick1);
-        intent.putExtra("sexdata", sflg);
-        intent.putExtra("heightdata", height1);
-        intent.putExtra("agedata", age1);
         intent.putExtra("monitordata", mflg);
         startActivity(intent);
 
