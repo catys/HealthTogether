@@ -72,41 +72,43 @@ public class EntryConfirmActivity extends AppCompatActivity {
 
     //登録ボタンクリック
     public void entryClick (View view) {
-        Intent dataintent = getIntent();
-        Bitmap bmp = global.getbmp();
+        try {
+            Intent dataintent = getIntent();
+            Bitmap bmp = global.getbmp();
 
-        //メールアドレス
-        mail = dataintent.getStringExtra("maildata");
+            //メールアドレス
+            mail = dataintent.getStringExtra("maildata");
 
-        //パスワード
-        pass = dataintent.getStringExtra("passdata");
+            //パスワード
+            pass = dataintent.getStringExtra("passdata");
 
-        //ニックネーム
-        nick = dataintent.getStringExtra("nickdata");
+            //ニックネーム
+            nick = dataintent.getStringExtra("nickdata");
 
-        //プロフィール画像
-        new PostBmpAsyncHttpRequest(this).execute(new Param("http://54.92.74.113/dataupload.php?mymail=" + mail,bmp));
-        proURL = "pro";//"http://54.92.74.113/prof/" + mail + ".jpg";
+            //プロフィール画像
+            new PostBmpAsyncHttpRequest(this).execute(new Param("http://54.92.74.113/dataupload.php?mymail=" + mail, bmp));
+            proURL = "pro";//"http://54.92.74.113/prof/" + mail + ".jpg";
 
-        //監視者フラグ
-        mflg = String.valueOf(dataintent.getIntExtra("monitordata",0));
+            //監視者フラグ
+            mflg = String.valueOf(dataintent.getIntExtra("monitordata", 0));
 
-        //phpへとデータを送信
-        ConnectHttpUser postdata = new ConnectHttpUser();
-        postdata.UserInsert(this,mail,pass,nick,proURL,mflg);
+            //phpへとデータを送信
+            ConnectHttpUser postdata = new ConnectHttpUser();
+            postdata.UserInsert(this, mail, pass, nick, proURL, mflg);
 
-        //SQLiteのdatabaseに格納
-        MyOpenHelper helper = new MyOpenHelper(this);
-        final SQLiteDatabase db = helper.getWritableDatabase();
+            //SQLiteのdatabaseに格納
+            MyOpenHelper helper = new MyOpenHelper(this);
+            final SQLiteDatabase db = helper.getWritableDatabase();
 
-        //データセット
-        ContentValues insertValues = new ContentValues();
-        insertValues.put("mail",mail);
-        insertValues.put("monitor",mflg);
-        long id  = db.insert("user",mail,insertValues);
+            //データセット
+            ContentValues insertValues = new ContentValues();
+            insertValues.put("mail", mail);
+            insertValues.put("monitor", mflg);
+            long id = db.insert("user", mail, insertValues);
 
-        Intent intent = new Intent(EntryConfirmActivity.this, UserActivity.class);
-        startActivity(intent);
-
+            Intent intent = new Intent(EntryConfirmActivity.this, MainActivity.class);
+            startActivity(intent);
+        }catch (Exception e){
+        }
     }
 }

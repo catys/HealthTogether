@@ -58,7 +58,7 @@ public class vitalinsert extends Activity {
 //入手データメモ：1,体重 2,体脂肪率 3,基礎代謝 4,骨格筋率 5,BMI 6,体年齢 7,内臓脂肪レベル
         // パラメータの付与
         Uri uri = baseUri.buildUpon()
-                .appendQueryParameter("mymail","omronman")
+                .appendQueryParameter("mymail",mymail)
                 .appendQueryParameter("weight",String.valueOf(v.get(0)))
                 .appendQueryParameter("bodyfat", String.valueOf(v.get(2)))
                 .appendQueryParameter("Basalmetabolism", String.valueOf(v.get(3)))

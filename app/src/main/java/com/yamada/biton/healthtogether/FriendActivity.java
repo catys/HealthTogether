@@ -164,18 +164,18 @@ public class FriendActivity  extends AppCompatActivity implements NavigationView
                 Intent intent2 = new Intent(this, MeasurementHistoryActivity.class);
                 startActivity(intent2);
                 break;
-            case R.id.menu_schedule:
+        /*    case R.id.menu_schedule:
                 Intent intent3 = new Intent(this, ScheduleActivity.class);
                 startActivity(intent3);
-                break;
+                break;*/
             case R.id.menu_friend:
                 Intent intent4 = new Intent(this, FriendActivity.class);
                 startActivity(intent4);
                 break;
-            case R.id.menu_ranking:
+        /*    case R.id.menu_ranking:
                 //Intent intent5 = new Intent(this, Activity.class);
                 //startActivity(intent5);
-                break;
+                break;*/
             case R.id.menu_user:
                 Intent intent6 = new Intent(this, UserActivity.class);
                 startActivity(intent6);

@@ -46,8 +46,6 @@ public class UserEditActivity extends AppCompatActivity {
         c.close();
         db.close();
 
-        System.out.println(mail);
-
         //phpへとデータを送信
         ConnectHttpUser postdata = new ConnectHttpUser();
         postdata.UserEditSelect(this, mail);
@@ -80,13 +78,6 @@ public class UserEditActivity extends AppCompatActivity {
         EditText nickTxt = (EditText) findViewById(R.id.nickTxt);
         SpannableStringBuilder sp4 = (SpannableStringBuilder)nickTxt.getText();
         nick = sp4.toString();
-
-        //画像
-
-        //身長
-        EditText heightTxt = (EditText) findViewById(R.id.heightTxt);
-        SpannableStringBuilder sp5 = (SpannableStringBuilder)heightTxt.getText();
-        height = sp5.toString();
 
         //体組成情報
         //体重計

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash"
     tools:context="com.yamada.biton.healthtogether.StartActivity"
     android:weightSum="1">
 
@@ -12,8 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="40dp"
-        android:layout_marginTop="20dp"
+        android:background="@drawable/splash"
         android:orientation="vertical">
 
         <LinearLayout
@@ -26,7 +24,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="131dp"
-            android:layout_weight="0.15"
             android:orientation="horizontal"
             android:weightSum="1"
             android:gravity="center|bottom">
@@ -35,9 +32,9 @@
                 android:id="@+id/button5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="0.57"
                 android:onClick="DeleteClick"
-                android:text="Button" />
+                android:text="削除" />
 
             <Button
                 android:id="@+id/startbutton"
@@ -46,7 +43,7 @@
                 android:layout_weight="1"
                 android:background="#00000000"
                 android:onClick="StartClick"
-                android:text="Start"
+                android:text="Tap!"
                 android:textColor="#ffaaaa"
                 android:textSize="25dp"/>
         </LinearLayout>

@@ -101,15 +101,15 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
             case R.id.menu_history:
                 System.out.println("履歴");
                 break;
-            case R.id.menu_schedule:
-                System.out.println("履歴");
-                break;
+            //case R.id.menu_schedule:
+                //System.out.println("履歴");
+                //break;
             case R.id.menu_friend:
                 System.out.println("履歴");
                 break;
-            case R.id.menu_ranking:
-                System.out.println("履歴");
-                break;
+            //case R.id.menu_ranking:
+                //System.out.println("履歴");
+                //break;
             case R.id.menu_user:
                 Intent intent = new Intent(this, UserActivity.class);
                 startActivity(intent);

@@ -68,7 +68,8 @@
                     android:scaleType="centerCrop"
                     android:text="手入力"
                     android:textColor="@android:color/background_light"
-                    android:textSize="17dp" />
+                    android:textSize="17dp"
+                    android:visibility="invisible" />
 
                 <Button
                     android:id="@+id/pairing"
@@ -125,7 +126,8 @@
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="体重" />
+                                android:text="体重"
+                                android:textColor="@color/common_signin_btn_dark_text_default" />
 
                             <TextView
                                 android:id="@+id/date"
@@ -134,7 +136,8 @@
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="No Data" />
+                                android:text="No Data"
+                                android:textColor="@color/common_signin_btn_dark_text_default"/>
 
                             <TextView
                                 android:id="@+id/textView3"
@@ -143,16 +146,18 @@
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="適性" />
+                                android:text="適性"
+                                android:textColor="@color/common_signin_btn_dark_text_default"/>
 
                             <TextView
-                                android:id="@+id/textView4"
+                                android:id="@+id/nowflag1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="前回" />
+                                android:text="前回"
+                                android:textColor="@color/common_signin_btn_dark_text_default"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -170,7 +175,8 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="No Data"
-                                android:textSize="24sp" />
+                                android:textSize="24sp"
+                                android:textColor="@color/common_signin_btn_dark_text_default"/>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -183,18 +189,21 @@
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/sokutei6"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:textColor="@color/common_signin_btn_dark_text_default">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:textColor="@color/common_signin_btn_dark_text_default">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            >
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -202,7 +211,8 @@
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="体脂肪率" />
+                                android:text="体脂肪率"
+                                android:textColor="@color/common_signin_btn_dark_text_default"/>
 
                             <TextView
                                 android:id="@+id/date1"
@@ -211,7 +221,8 @@
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="No Data" />
+                                android:text="No Data"
+                                android:textColor="@color/common_signin_btn_dark_text_default"/>
 
                             <TextView
                                 android:id="@+id/tbodyfat"
@@ -220,16 +231,18 @@
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="適性" />
+                                android:text="適性"
+                                android:textColor="@color/common_signin_btn_dark_text_default"/>
 
                             <TextView
-                                android:id="@+id/textView6"
+                                android:id="@+id/nowflag2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="前回" />
+                                android:text="前回"
+                                android:textColor="@color/common_signin_btn_dark_text_default"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -247,7 +260,8 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="No Data"
-                                android:textSize="24sp" />
+                                android:textSize="24sp"
+                                android:textColor="@color/common_signin_btn_dark_text_default"/>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -266,7 +280,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/sokutei6"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    >
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -285,7 +300,8 @@
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="内臓脂肪" />
+                                android:text="内臓脂肪"
+                                android:textColor="@color/common_signin_btn_dark_text_default"/>
 
                             <TextView
                                 android:id="@+id/date2"
@@ -294,7 +310,8 @@
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="No Data" />
+                                android:text="No Data"
+                                android:textColor="@color/common_signin_btn_dark_text_default"/>
 
                             <TextView
                                 android:id="@+id/tvfat"
@@ -303,16 +320,18 @@
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="適性" />
+                                android:text="適性"
+                                android:textColor="@color/common_signin_btn_dark_text_default" />
 
                             <TextView
-                                android:id="@+id/textView7"
+                                android:id="@+id/nowflag3"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="前回" />
+                                android:text="前回"
+                                android:textColor="@color/common_signin_btn_dark_text_default"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -330,6 +349,7 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="No Data"
+                                android:textColor="@color/common_signin_btn_dark_text_default"
                                 android:textSize="24sp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -362,7 +382,8 @@
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="基礎代謝" />
+                                android:text="基礎代謝"
+                                android:textColor="@color/common_signin_btn_dark_text_default"/>
 
                             <TextView
                                 android:id="@+id/date3"
@@ -371,7 +392,8 @@
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="No Data" />
+                                android:text="No Data"
+                                android:textColor="@color/common_signin_btn_dark_text_default"/>
 
                             <TextView
                                 android:id="@+id/tbasalmetabolism"
@@ -379,16 +401,18 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
-                                android:text="適性" />
+                                android:text="適性"
+                                android:textColor="@color/common_signin_btn_dark_text_default" />
 
                             <TextView
-                                android:id="@+id/textView8"
+                                android:id="@+id/nowflag4"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="前回" />
+                                android:text="前回"
+                                android:textColor="@color/common_signin_btn_dark_text_default" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -406,7 +430,8 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="No Data"
-                                android:textSize="24sp" />
+                                android:textSize="24sp"
+                                android:textColor="@color/common_signin_btn_dark_text_default" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -445,7 +470,8 @@
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="骨格筋率" />
+                                android:text="骨格筋率"
+                                android:textColor="@color/common_signin_btn_dark_text_default" />
 
                             <TextView
                                 android:id="@+id/date4"
@@ -454,7 +480,8 @@
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="No Data" />
+                                android:text="No Data"
+                                android:textColor="@color/common_signin_btn_dark_text_default" />
 
                             <TextView
                                 android:id="@+id/tsm"
@@ -463,16 +490,18 @@
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="適性" />
+                                android:text="適性"
+                                android:textColor="@color/common_signin_btn_dark_text_default" />
 
                             <TextView
-                                android:id="@+id/textView9"
+                                android:id="@+id/nowflag5"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="前回" />
+                                android:text="前回"
+                                android:textColor="@color/common_signin_btn_dark_text_default" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -490,7 +519,8 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="No Data"
-                                android:textSize="24sp" />
+                                android:textSize="24sp"
+                                android:textColor="@color/common_signin_btn_dark_text_default" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -523,7 +553,8 @@
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="BMI" />
+                                android:text="BMI"
+                                android:textColor="@color/common_signin_btn_dark_text_default" />
 
                             <TextView
                                 android:id="@+id/date5"
@@ -532,7 +563,8 @@
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="No Data" />
+                                android:text="No Data"
+                                android:textColor="@color/common_signin_btn_dark_text_default" />
 
                             <TextView
                                 android:id="@+id/tbmi"
@@ -541,16 +573,18 @@
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="適性" />
+                                android:text="適性"
+                                android:textColor="@color/common_signin_btn_dark_text_default" />
 
                             <TextView
-                                android:id="@+id/textView11"
+                                android:id="@+id/nowflag6"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="前回" />
+                                android:text="前回"
+                                android:textColor="@color/common_signin_btn_dark_text_default" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -568,7 +602,8 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="No Data"
-                                android:textSize="24sp" />
+                                android:textSize="24sp"
+                                android:textColor="@color/common_signin_btn_dark_text_default" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -607,7 +642,8 @@
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="体年齢" />
+                                android:text="体年齢"
+                                android:textColor="@color/common_signin_btn_dark_text_default" />
 
                             <TextView
                                 android:id="@+id/date6"
@@ -616,7 +652,8 @@
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="No Data" />
+                                android:text="No Data"
+                                android:textColor="@color/common_signin_btn_dark_text_default" />
 
                             <TextView
                                 android:id="@+id/tbodyage"
@@ -625,16 +662,18 @@
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="適性" />
+                                android:text="適性"
+                                android:textColor="@color/common_signin_btn_dark_text_default" />
 
                             <TextView
-                                android:id="@+id/textView2"
+                                android:id="@+id/nowflag7"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:text="前回" />
+                                android:text="前回"
+                                android:textColor="@color/common_signin_btn_dark_text_default" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -652,7 +691,8 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="No Data"
-                                android:textSize="24sp" />
+                                android:textSize="24sp"
+                                android:textColor="@color/common_signin_btn_dark_text_default" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>

@@ -104,11 +104,15 @@ public class MeasurementHistoryActivity extends AppCompatActivity implements Nav
         progressDialog.setCancelable(true);
         progressDialog.show();
 
-        chartlayout = (LinearLayout) findViewById(R.id.chart1);
-        GraphicalView graphicalView = TimeChartView();
-        chartlayout.removeAllViews();
-        chartlayout.addView(graphicalView);
-
+        try {
+            chartlayout = (LinearLayout) findViewById(R.id.chart1);
+            GraphicalView graphicalView = TimeChartView();
+            chartlayout.removeAllViews();
+            chartlayout.addView(graphicalView);
+        }catch (Exception e){
+            Intent intent = new Intent(this, ScheduleActivity.class);
+            startActivity(intent);
+        }
 
         float ttotal=Global.gettotal();
         TextView textparam = (TextView)findViewById(R.id.vitaltext1);
@@ -329,18 +333,18 @@ public void run() {
                 Intent intent2 = new Intent(this, MeasurementHistoryActivity.class);
                 startActivity(intent2);
                 break;
-            case R.id.menu_schedule:
-                Intent intent3 = new Intent(this, ScheduleActivity.class);
-                startActivity(intent3);
-                break;
+            //case R.id.menu_schedule:
+                //Intent intent3 = new Intent(this, ScheduleActivity.class);
+                //startActivity(intent3);
+                //break;
             case R.id.menu_friend:
                 Intent intent4 = new Intent(this, FriendActivity.class);
                 startActivity(intent4);
                 break;
-            case R.id.menu_ranking:
+            //case R.id.menu_ranking:
                 //Intent intent5 = new Intent(this, Activity.class);
                 //startActivity(intent5);
-                break;
+                //break;
             case R.id.menu_user:
                 Intent intent6 = new Intent(this, UserActivity.class);
                 startActivity(intent6);

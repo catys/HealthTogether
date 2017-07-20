@@ -5,8 +5,9 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
-import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.yamada.biton.healthtogether.R;
@@ -183,7 +184,7 @@ public class ConnectHttpUser extends Activity {
 
         // パラメータの付与
         Uri uri = baseUri.buildUpon()
-                .appendQueryParameter("mail",mail)
+                .appendQueryParameter("mailaddress",mail)
                 .build();
 
         if (mTask == null) {
@@ -278,10 +279,17 @@ public class ConnectHttpUser extends Activity {
                         String pass = item.getString("password");//パスワード
                         String nick = item.getString("nickname");//ニックネーム
                         String profile = item.getString("profileURL");//プロフィール画像
-                        String monitor = item.getString("monitorflag");//監視者フラグ
                         int sex = item.getInt("sex");//性別
                         String height = item.getString("height");//身長
                         String age = item.getString("age");//性別
+                        int bw = item.getInt("bwflag");//体重
+                        int bf = item.getInt("bfflag");//体脂肪率
+                        int bmi = item.getInt("bmiflag");//BMI
+                        int vf = item.getInt("vfflag");
+                        int sm = item.getInt("smiflag");
+                        int ba = item.getInt("baflag");//体年齢
+                        int bm = item.getInt("bmflag");
+
 
                         //プロフィール画像
 //                        ImageView imageView = (ImageView) mActivity.findViewById(R.id.userImg);
@@ -317,6 +325,35 @@ public class ConnectHttpUser extends Activity {
 
 //公開する情報ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
+                        if (bw == 0) {
+                            TextView bwTxt = (TextView) mActivity.findViewById(R.id.bwTxt);
+                            bwTxt.setVisibility(View.GONE);
+                        }
+                        if (bf == 0) {
+                            TextView bfTxt = (TextView) mActivity.findViewById(R.id.bfTxt);
+                            bfTxt.setVisibility(View.GONE);
+                        }
+                        if (bmi == 0) {
+                            TextView bmiTxt = (TextView) mActivity.findViewById(R.id.bmiTxt);
+                            bmiTxt.setVisibility(View.GONE);
+                        }
+                        if (vf == 0) {
+                            TextView vfTxt = (TextView) mActivity.findViewById(R.id.vfTxt);
+                            vfTxt.setVisibility(View.GONE);
+                        }
+                        if (sm == 0) {
+                            TextView smTxt = (TextView) mActivity.findViewById(R.id.smTxt);
+                            smTxt.setVisibility(View.GONE);
+                        }
+                        if (ba == 0) {
+                            TextView baTxt = (TextView) mActivity.findViewById(R.id.baTxt);
+                            baTxt.setVisibility(View.GONE);
+                        }
+                        if (bm == 0) {
+                            TextView bmTxt = (TextView) mActivity.findViewById(R.id.bmTxt);
+                            bmTxt.setVisibility(View.GONE);
+                        }
+
                         mTask = null;
                     } catch (Exception e) {
                     }
@@ -350,7 +387,7 @@ public class ConnectHttpUser extends Activity {
 
         // パラメータの付与
         Uri uri = baseUri.buildUpon()
-                .appendQueryParameter("mail",mail)
+                .appendQueryParameter("mailaddress",mail)
                 .build();
 
         if (mTask == null) {
@@ -445,10 +482,14 @@ public class ConnectHttpUser extends Activity {
                         String pass = item.getString("password");//パスワード
                         String nick = item.getString("nickname");//ニックネーム
                         String profile = item.getString("profileURL");//プロフィール画像
-                        String monitor = item.getString("monitorflag");//監視者フラグ
-                        int sex = item.getInt("sex");//性別
-                        String height = item.getString("height");//身長
-                        String age = item.getString("age");//性別
+                        int bw = item.getInt("bwflag");//体重
+                        int bf = item.getInt("bfflag");//体脂肪率
+                        int bmi = item.getInt("bmiflag");//BMI
+                        int vf = item.getInt("vfflag");
+                        int sm = item.getInt("smiflag");
+                        int ba = item.getInt("baflag");//体年齢
+                        int bm = item.getInt("bmflag");
+
 
                         //編集画面に表示
 
@@ -467,26 +508,37 @@ public class ConnectHttpUser extends Activity {
                         EditText nickTxt1 = (EditText) mActivity.findViewById(R.id.nickTxt);
                         nickTxt1.setText(nick);
 
-                        //性別
-                        RadioGroup group = (RadioGroup)mActivity.findViewById(R.id.radioGroupSex);
-                        if (sex == 1) {
-                            group.check(R.id.manRadioBtn);
-                        }else if(sex == 0) {
-                            group.check(R.id.womanRadioBtn);
-                        }
-
-                        //身長
-                        EditText heightTxt1 = (EditText) mActivity.findViewById(R.id.heightTxt);
-                        heightTxt1.setText(height);
-
-                        //年齢
-                        EditText ageTxt1 = (EditText) mActivity.findViewById(R.id.ageTxt);
-                        ageTxt1.setText(age);
-
 
                         //公開する情報ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
-
+                        if (bw == 1) {
+                            Switch bwSwitch = (Switch) mActivity.findViewById(R.id.bwSwitch);
+                            bwSwitch.setChecked(true);  // 状態をONに
+                        }
+                        if (bf == 1) {
+                            Switch bfSwitch = (Switch) mActivity.findViewById(R.id.bfSwitch);
+                            bfSwitch.setChecked(true);  // 状態をONに
+                        }
+                        if (bmi == 1) {
+                            Switch bmiSwitch = (Switch) mActivity.findViewById(R.id.bmiSwitch);
+                            bmiSwitch.setChecked(true);  // 状態をONに
+                        }
+                        if (vf == 1) {
+                            Switch vfSwitch = (Switch) mActivity.findViewById(R.id.vfSwitch);
+                            vfSwitch.setChecked(true);  // 状態をONに
+                        }
+                        if (sm == 1) {
+                            Switch smSwitch = (Switch) mActivity.findViewById(R.id.smSwitch);
+                            smSwitch.setChecked(true);  // 状態をONに
+                        }
+                        if (ba == 1) {
+                            Switch baSwitch = (Switch) mActivity.findViewById(R.id.baSwitch);
+                            baSwitch.setChecked(true);  // 状態をONに
+                        }
+                        if (bm == 1) {
+                            Switch bmSwitch = (Switch) mActivity.findViewById(R.id.bmSwitch);
+                            bmSwitch.setChecked(true);  // 状態をONに
+                        }
 
                         mTask = null;
                     } catch (Exception e) {
