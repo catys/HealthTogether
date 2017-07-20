@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.appindexing.AppIndex;
@@ -44,9 +43,6 @@ public class getvital extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_getvital);
 
-        Button btnGetVitalData = (Button) findViewById(R.id.button);
-        btnGetVitalData.setOnClickListener(button1ClickListener);
-
 
         getMetaData = false;
 
@@ -61,9 +57,8 @@ public class getvital extends AppCompatActivity {
         mClient = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-    View.OnClickListener button1ClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
+
+        public void getv(View v) {
             mWrapperApi = new WrapperApi(v.getContext(), APP_ID, getPackageName());
             ArrayList<EquipmentInfo> equipmentInfoList = mWrapperApi.getDeveiceList(true);
 
@@ -134,7 +129,7 @@ public class getvital extends AppCompatActivity {
 
 
         }
-    };
+
 
     private long[] getFromToTime() {
 

@@ -110,7 +110,7 @@ public class MeasurementHistoryActivity extends AppCompatActivity implements Nav
             chartlayout.removeAllViews();
             chartlayout.addView(graphicalView);
         }catch (Exception e){
-            Intent intent = new Intent(this, ScheduleActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
 

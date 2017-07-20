@@ -18,8 +18,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.yamada.biton.healthtogether.AsyncTasksPackage.ConnectHttpVital;
 import com.yamada.biton.healthtogether.AsyncTasksPackage.httpconnection;
 import com.yamada.biton.healthtogether.AsyncTasksPackage.vitalinsert;
@@ -40,7 +38,6 @@ import jp.co.omron.healthcare.omoron_connect.wrapper.WrapperApi;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //ユーザーのメールアドレスを設定
     String mymail = "testmail1",friendmail;
-
     WrapperApi mWrapperApi = null;
     boolean getMetaData = false;
     boolean mUseTimeZone = true;
@@ -49,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     String SerialID;
 
     private static final String APP_ID = "XCXvv8SD";
-    private GoogleApiClient mClient;
+ //   private GoogleApiClient mClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -70,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mWrapperApi = new WrapperApi(this, APP_ID, getPackageName());
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-         mClient = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+ //        mClient = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
         // Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -162,37 +159,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     View.OnClickListener button1ClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
-            TextView nowflag1 = (TextView)findViewById(R.id.nowflag1);
-            TextView nowflag2 = (TextView)findViewById(R.id.nowflag2);
-            TextView nowflag3 = (TextView)findViewById(R.id.nowflag3);
-            TextView nowflag4 = (TextView)findViewById(R.id.nowflag4);
-            TextView nowflag5 = (TextView)findViewById(R.id.nowflag5);
-            TextView nowflag6 = (TextView)findViewById(R.id.nowflag6);
-            TextView nowflag7 = (TextView)findViewById(R.id.nowflag7);
-
-            nowflag1.setText("今回");
-            nowflag2.setText("今回");
-            nowflag3.setText("今回");
-            nowflag4.setText("今回");
-            nowflag5.setText("今回");
-            nowflag6.setText("今回");
-            nowflag7.setText("今回");
-
-
-
             mWrapperApi = new WrapperApi(v.getContext(), APP_ID, getPackageName());
             ArrayList<EquipmentInfo> equipmentInfoList = mWrapperApi.getDeveiceList(true);
 
 
+            if (equipmentInfoList != null){
+                for (EquipmentInfo equipmentInfo : equipmentInfoList) {
+                    Equipmenttype = equipmentInfo.getDeviceType();
+                    UserID = equipmentInfo.getUserId();
+                    SerialID = equipmentInfo.getSerialId();
 
-            for (EquipmentInfo equipmentInfo : equipmentInfoList) {
-                Equipmenttype = equipmentInfo.getDeviceType();
-                UserID = equipmentInfo.getUserId();
-                SerialID =equipmentInfo.getSerialId();
-
+                }
             }
-
             long[] time = getFromToTime();
 
             String index = "";
@@ -240,9 +218,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 }
 
-                UserProfileInfo info = mWrapperApi.getUserProfile();
-                vitalinsert viin = new vitalinsert();
-
                 //SQLite
                 MyOpenHelper helper = new MyOpenHelper(MainActivity.this);
                 SQLiteDatabase db = helper.getReadableDatabase();
@@ -258,19 +233,42 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 c.close();
                 db.close();
 
+                UserProfileInfo info = mWrapperApi.getUserProfile();
+                vitalinsert viin = new vitalinsert();
                 viin.vitalpost(mymail,DataList, info);
-                Toast toast = Toast.makeText(MainActivity.this,"アップロードに成功しました。",Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(MainActivity.this,"アップロードに成功しました",Toast.LENGTH_LONG);
                 toast.show();
             } else {
-                Toast toast = Toast.makeText(MainActivity.this,"アップロードに失敗しました。",Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(MainActivity.this,"アップロードに失敗しました",Toast.LENGTH_LONG);
                 toast.show();
             }
 
 
+
+            TextView nowflag1 = (TextView) findViewById(R.id.nowflag1);
+            TextView nowflag2 = (TextView) findViewById(R.id.nowflag2);
+            TextView nowflag3 = (TextView) findViewById(R.id.nowflag3);
+            TextView nowflag4 = (TextView) findViewById(R.id.nowflag4);
+            TextView nowflag5 = (TextView) findViewById(R.id.nowflag5);
+            TextView nowflag6 = (TextView) findViewById(R.id.nowflag6);
+            TextView nowflag7 = (TextView) findViewById(R.id.nowflag7);
+
+            nowflag1.setText("今回");
+            nowflag2.setText("今回");
+            nowflag3.setText("今回");
+            nowflag4.setText("今回");
+            nowflag5.setText("今回");
+            nowflag6.setText("今回");
+            nowflag7.setText("今回");
+
+
         }
+
+
     };
 
     private long[] getFromToTime() {
+
 
         int yyyy, mm, dd, hh;
         long from = 0, to = 0;
@@ -313,6 +311,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ret[1] = to;
 
         return ret;
+
     }
 
 }

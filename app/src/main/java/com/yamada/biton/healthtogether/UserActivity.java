@@ -96,27 +96,33 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
 
         switch(item.getItemId()){
             case R.id.menu_result:
-                System.out.println("履歴");
+                Intent intent1 = new Intent(this, MainActivity.class);
+                startActivity(intent1);
                 break;
             case R.id.menu_history:
-                System.out.println("履歴");
+                Intent intent2 = new Intent(this, MeasurementHistoryActivity.class);
+                startActivity(intent2);
                 break;
-            //case R.id.menu_schedule:
-                //System.out.println("履歴");
-                //break;
+        /*    case R.id.menu_schedule:
+                Intent intent3 = new Intent(this, ScheduleActivity.class);
+                startActivity(intent3);
+                break;*/
             case R.id.menu_friend:
-                System.out.println("履歴");
+                Intent intent4 = new Intent(this, FriendActivity.class);
+                startActivity(intent4);
                 break;
-            //case R.id.menu_ranking:
-                //System.out.println("履歴");
-                //break;
+        /*    case R.id.menu_ranking:
+                //Intent intent5 = new Intent(this, Activity.class);
+                //startActivity(intent5);
+                break;*/
             case R.id.menu_user:
-                Intent intent = new Intent(this, UserActivity.class);
-                startActivity(intent);
+                Intent intent6 = new Intent(this, UserActivity.class);
+                startActivity(intent6);
                 break;
             case R.id.menu_contact:
-                System.out.println("履歴");
-                break;
+                //Intent intent7 = new Intent(this, UserActivity.class);
+                //startActivity(intent7);
+                //break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
