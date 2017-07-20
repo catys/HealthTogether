@@ -238,6 +238,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 viin.vitalpost(mymail,DataList, info);
                 Toast toast = Toast.makeText(MainActivity.this,"アップロードに成功しました",Toast.LENGTH_LONG);
                 toast.show();
+
+                httpconnection con = new httpconnection();
+                con.ResultDisplay(MainActivity.this,mymail);
             } else {
                 Toast toast = Toast.makeText(MainActivity.this,"アップロードに失敗しました",Toast.LENGTH_LONG);
                 toast.show();
