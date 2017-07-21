@@ -118,6 +118,7 @@ public class MeasurementHistoryActivity extends AppCompatActivity implements Nav
         textparam.setText("あなたのトータルは\n"+ ttotal + "kgです");
         //handler.postDelayed(updateRunnable, 0);
         progressDialog.dismiss();
+           //
        }catch (Exception e){
            Toast toast = Toast.makeText(MeasurementHistoryActivity.this,"データがありません",Toast.LENGTH_LONG);
            toast.show();
