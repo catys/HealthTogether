@@ -1,7 +1,5 @@
 package com.yamada.biton.healthtogether;
 
-import java.util.List;
-
 /**
  * Created by 優太 on 2017/07/03.
  */
@@ -12,6 +10,7 @@ public class FriendInfo {
     String friendmail;
     String allreleaseflag;
     String scheduleflag;
+    String profile;
 
     //String profile;
 
@@ -37,6 +36,14 @@ public class FriendInfo {
 
     public String getFriendmail(){
         return friendmail;
+    }
+
+    public void setProfile(String prof){
+        profile = prof;
+    }
+
+    public String getProfile(){
+        return profile;
     }
 
     public void setAllreleaseflag(String flag){

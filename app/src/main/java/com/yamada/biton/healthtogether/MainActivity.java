@@ -159,6 +159,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     View.OnClickListener button1ClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+
+
+
             mWrapperApi = new WrapperApi(v.getContext(), APP_ID, getPackageName());
             ArrayList<EquipmentInfo> equipmentInfoList = mWrapperApi.getDeveiceList(true);
 
@@ -235,7 +238,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 UserProfileInfo info = mWrapperApi.getUserProfile();
                 vitalinsert viin = new vitalinsert();
-                viin.vitalpost(mymail,DataList, info);
+                viin.vitalpost(mymail,DataList,info);
                 Toast toast = Toast.makeText(MainActivity.this,"アップロードに成功しました",Toast.LENGTH_LONG);
                 toast.show();
 
@@ -246,6 +249,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 toast.show();
             }
 
+            //グラフ非同期
+            ////////////////////////////
+            ConnectHttpVital postdata = new ConnectHttpVital();
+            postdata.MeasurementHistorySelect(MainActivity.this,mymail);
+            ConnectHttpVital postdata1 = new ConnectHttpVital();
+            postdata1.Totalvital(MainActivity.this,mymail);
 
 
             TextView nowflag1 = (TextView) findViewById(R.id.nowflag1);

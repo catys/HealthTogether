@@ -29,14 +29,6 @@
             android:gravity="center|bottom">
 
             <Button
-                android:id="@+id/button5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.57"
-                android:onClick="DeleteClick"
-                android:text="削除" />
-
-            <Button
                 android:id="@+id/startbutton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

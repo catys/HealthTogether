@@ -1,6 +1,8 @@
 package com.yamada.biton.healthtogether;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -30,9 +32,25 @@ public class FriendActivity  extends AppCompatActivity implements NavigationView
     //ユーザーのメールアドレスを設定
     String mymail = "testmail1",friendmail;
 
+
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend);
+
+        //SQLite
+        MyOpenHelper helper = new MyOpenHelper(this);
+        SQLiteDatabase db = helper.getReadableDatabase();
+
+        // queryメソッドの実行例
+        Cursor c = db.query("user", new String[] { "mail", "monitor" }, null,
+                null, null, null, null);
+
+        boolean mov = c.moveToFirst();
+        if (mov) {
+            mymail = c.getString(0);
+        }
+        c.close();
+        db.close();
 
         ListView listView = (ListView)findViewById(R.id.listView);
 

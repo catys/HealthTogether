@@ -1,19 +1,19 @@
 package com.yamada.biton.healthtogether;
 
-import android.app.Activity;
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
-import android.widget.ListView;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.yamada.biton.healthtogether.AsyncTasksPackage.AsyncTaskHttpRequest;
 
 import java.util.ArrayList;
 
-import static com.yamada.biton.healthtogether.R.drawable.entry_button;
 import static com.yamada.biton.healthtogether.R.drawable.release_button;
 import static com.yamada.biton.healthtogether.R.drawable.release_button2;
 import static com.yamada.biton.healthtogether.R.drawable.share_button;
@@ -63,6 +63,16 @@ public class FriendAdapter extends BaseAdapter {
         ((ImageButton)convertView.findViewById(R.id.schedule_Button)).setTag(friendList.get(position).getFriendmail());
 
         ((ImageButton)convertView.findViewById(R.id.friendAD)).setTag(friendList.get(position).getFriendmail());
+
+        /////画像追加/////
+        if(!(friendList.get(position).getProfile().equals("null"))){
+            ImageView imageView =(ImageView)convertView.findViewById(R.id.imageView);
+
+            Uri uri = Uri.parse("http://54.92.74.113/prof/" + friendList.get(position).getFriendmail() + ".jpg");
+            Uri.Builder builder = uri.buildUpon();
+            AsyncTaskHttpRequest task = new AsyncTaskHttpRequest(imageView);
+            task.execute(builder);
+        }
 
         //情報共有
         String hantei = friendList.get(position).getAllreleaseflag();

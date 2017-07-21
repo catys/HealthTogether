@@ -24,10 +24,12 @@
 
             <ImageView
                 android:id="@+id/imageView"
+                android:scaleType="fitCenter"
                 android:layout_width="59dp"
                 android:layout_height="78dp"
-                app:srcCompat="@android:drawable/sym_def_app_icon"
-                android:layout_weight="0.55" />
+                app:srcCompat="@drawable/human"
+                android:layout_weight="0.55"
+                android:layout_gravity="center"/>
 
             <TextView
                 android:id="@+id/friendmail"
@@ -55,7 +57,7 @@
             android:layout_height="20dp"
             android:orientation="horizontal"
             android:layout_marginTop="5dp"
-            android:paddingLeft="20dp">
+            android:paddingLeft="40dp">
 
             <TextView
                 android:id="@+id/textView9"
@@ -72,6 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="9dp"
+                android:paddingLeft="40dp"
                 android:text="体組成情報共有"
                 android:layout_gravity="center"/>
         </LinearLayout>
@@ -80,7 +83,8 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
-            android:layout_weight="0.46">
+            android:layout_weight="0.46"
+            android:layout_marginTop="-8dp">
 
             <ImageButton
                 android:id="@+id/schedule_Button"

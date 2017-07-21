@@ -144,9 +144,13 @@ public class Global extends Application {
     public static void setvital(float[] ydata) {
         vData = new float[30];
         vData = ydata;
+        for(int i = 0;vData.length>i;i++) {
+            System.out.println(vData[i]);
+        }
     }
 
     public static float[] getvital() {
+
         return vData;
     }
 
