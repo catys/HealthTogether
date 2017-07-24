@@ -45,7 +45,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="6"
-            android:background="@drawable/sokutei1"
             android:orientation="vertical">
 
             <LinearLayout
@@ -71,14 +70,14 @@
                     android:textSize="17dp"
                     android:visibility="invisible" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/pairing"
-                    android:layout_width="wrap_content"
+                    android:layout_width="61dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
-                    android:background="@drawable/sokutei5"
+                    android:background="@drawable/paring"
                     android:paddingBottom="15dp"
                     android:paddingTop="15dp"
                     android:scaleType="centerCrop"
@@ -106,7 +105,7 @@
                     android:layout_marginRight="3dp"
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/sokutei6"
+                    android:background="@drawable/kekkahaikei"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -175,6 +174,7 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="No Data"
+                                android:textStyle="bold"
                                 android:textSize="24sp"
                                 android:textColor="@color/common_signin_btn_dark_text_default"/>
                         </LinearLayout>
@@ -188,7 +188,7 @@
                     android:layout_marginLeft="3dp"
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/sokutei6"
+                    android:background="@drawable/kekkahaikei"
                     android:orientation="vertical"
                     android:textColor="@color/common_signin_btn_dark_text_default">
 
@@ -259,6 +259,7 @@
                                 android:layout_marginTop="5dp"
                                 android:layout_weight="1"
                                 android:gravity="center"
+                                android:textStyle="bold"
                                 android:text="No Data"
                                 android:textSize="24sp"
                                 android:textColor="@color/common_signin_btn_dark_text_default"/>
@@ -279,7 +280,7 @@
                     android:layout_marginRight="3dp"
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/sokutei6"
+                    android:background="@drawable/kekkahaikei"
                     android:orientation="vertical"
                     >
 
@@ -349,6 +350,7 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="No Data"
+                                android:textStyle="bold"
                                 android:textColor="@color/common_signin_btn_dark_text_default"
                                 android:textSize="24sp" />
                         </LinearLayout>
@@ -362,7 +364,7 @@
                     android:layout_marginLeft="3dp"
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/sokutei6"
+                    android:background="@drawable/kekkahaikei"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -430,6 +432,7 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="No Data"
+                                android:textStyle="bold"
                                 android:textSize="24sp"
                                 android:textColor="@color/common_signin_btn_dark_text_default" />
                         </LinearLayout>
@@ -449,7 +452,7 @@
                     android:layout_marginRight="3dp"
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/sokutei6"
+                    android:background="@drawable/kekkahaikei"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -519,6 +522,7 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="No Data"
+                                android:textStyle="bold"
                                 android:textSize="24sp"
                                 android:textColor="@color/common_signin_btn_dark_text_default" />
                         </LinearLayout>
@@ -532,7 +536,7 @@
                     android:layout_marginLeft="3dp"
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/sokutei6"
+                    android:background="@drawable/kekkahaikei"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -602,6 +606,7 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="No Data"
+                                android:textStyle="bold"
                                 android:textSize="24sp"
                                 android:textColor="@color/common_signin_btn_dark_text_default" />
                         </LinearLayout>
@@ -621,7 +626,7 @@
                     android:layout_marginRight="3dp"
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/sokutei6"
+                    android:background="@drawable/kekkahaikei"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -691,6 +696,7 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="No Data"
+                                android:textStyle="bold"
                                 android:textSize="24sp"
                                 android:textColor="@color/common_signin_btn_dark_text_default" />
                         </LinearLayout>
@@ -704,7 +710,7 @@
                     android:layout_marginLeft="3dp"
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/sokutei6"
+                    android:background="@drawable/kekkahaikei"
                     android:orientation="vertical"
                     android:visibility="invisible">
 

@@ -13,7 +13,7 @@ import android.widget.Button;
 
 public class StartActivity extends AppCompatActivity {
 
-        private final static int SPLASH_TIME = 1500;
+        private final static int SPLASH_TIME = 1000;
 
         @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,7 @@ public class StartActivity extends AppCompatActivity {
         }
 
     public void StartClick(View v){
+
 
         MyOpenHelper helper = new MyOpenHelper(this);
         SQLiteDatabase db = helper.getReadableDatabase();
@@ -58,7 +59,7 @@ public class StartActivity extends AppCompatActivity {
                 startActivity(intent);
             } else if(c.getInt(1) == 1) {
                 //監視画面遷移
-                Intent intent = new Intent(StartActivity.this, FriendActivity.class);
+                Intent intent = new Intent(StartActivity.this, UserActivity.class);
                 startActivity(intent);
             }
         }
@@ -66,10 +67,11 @@ public class StartActivity extends AppCompatActivity {
         //DB切断
         c.close();
         db.close();
+
     }
 
     //内部DB削除
-    public void DeleteClick (View view) {
+    public void DeleteClick(View view) {
         MyOpenHelper helper = new MyOpenHelper(this);
         SQLiteDatabase db = helper.getReadableDatabase();
 

@@ -17,8 +17,8 @@ public class EntryConfirmActivity extends AppCompatActivity {
 
     String proURL = "URL",mail = "mymail",pass = "mypass",nick = "mynick",mflg = "mymonitor";
 
-    String setMail = "mail",setPass = "pass",setNick = "nick",setHeight = "height",setAge = "age";
-    int setMonitor,setSex;
+    String setMail = "mail",setPass = "pass",setNick = "nick";
+    int setMonitor;
     Global global = new Global();
 
 
@@ -72,7 +72,7 @@ public class EntryConfirmActivity extends AppCompatActivity {
 
     //登録ボタンクリック
     public void entryClick (View view) {
-        try {
+
             Intent dataintent = getIntent();
             Bitmap bmp = global.getbmp();
 
@@ -87,7 +87,7 @@ public class EntryConfirmActivity extends AppCompatActivity {
 
             //プロフィール画像
             new PostBmpAsyncHttpRequest(this).execute(new Param("http://54.92.74.113/dataupload.php?mymail=" + mail, bmp));
-            proURL = "pro";//"http://54.92.74.113/prof/" + mail + ".jpg";
+            proURL = "profile";//"http://54.92.74.113/prof/" + mail + ".jpg";
 
             //監視者フラグ
             mflg = String.valueOf(dataintent.getIntExtra("monitordata", 0));
@@ -108,7 +108,5 @@ public class EntryConfirmActivity extends AppCompatActivity {
 
             Intent intent = new Intent(EntryConfirmActivity.this, MainActivity.class);
             startActivity(intent);
-        }catch (Exception e){
-        }
     }
 }

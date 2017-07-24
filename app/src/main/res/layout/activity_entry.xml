@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/sokutei3" >
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="40dp"
@@ -35,8 +35,7 @@
                 android:layout_height="wrap_content"
                 android:background="#00000000"
                 android:onClick="imgClick"
-                app:srcCompat="@drawable/humanadd"
-                />
+                app:srcCompat="@drawable/humanadd" />
         </LinearLayout>
 
         <LinearLayout
@@ -64,6 +63,25 @@
                 android:ems="10"
                 android:inputType="textEmailAddress"
                 android:layout_weight="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/alreadyTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="このメールアドレスは既に使用されています。"
+                    android:textSize="15sp"
+                    android:textColor="#CC0000"
+                    android:visibility="gone"/>
             </LinearLayout>
 
             <LinearLayout
@@ -119,9 +137,26 @@
                     android:ems="10"
                     android:inputType="textPassword"
                     android:layout_weight="1"/>
-
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/passCheckTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="パスワードが一致していません。"
+                    android:textSize="15sp"
+                    android:textColor="#CC0000"
+                    android:visibility="gone"/>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -172,6 +207,26 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/emptyTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="入力されていない項目があります。"
+                android:textSize="15sp"
+                android:textColor="#CC0000"
+                android:visibility="gone"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
                 <Button
                     android:id="@+id/confirmBtn"
                     android:layout_width="match_parent"
@@ -188,7 +243,7 @@
             </LinearLayout>
 
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 
     <GridLayout
         android:layout_width="match_parent"

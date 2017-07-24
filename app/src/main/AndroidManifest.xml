@@ -20,50 +20,43 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"  >
-        </activity>
+            android:label="@string/app_name" />
         <activity
             android:name=".FriendActivity"
-            android:label="@string/app_name">
-        </activity>
+            android:label="@string/app_name" />
         <activity
             android:name=".ScheduleActivity"
-            android:label="@string/app_name">
-        </activity>
+            android:label="@string/app_name" />
         <activity
             android:name=".ScheduleShareActivity"
-            android:label="@string/app_name">
-        </activity>
-
+            android:label="@string/app_name" />
         <activity
             android:name=".EntryActivity"
-            android:label="@string/app_name">
-        </activity>
+            android:label="@string/app_name" />
         <activity
             android:name=".EntryConfirmActivity"
-            android:label="@string/app_name">
-        </activity>
+            android:label="@string/app_name" />
         <activity
             android:name=".UserActivity"
-            android:label="@string/app_name">
-        </activity>
-        <activity
-        android:name=".UserEditActivity"
-        android:label="@string/app_name">
-    </activity>
-
             android:label="@string/app_name" />
+        <activity
+            android:name=".UserEditActivity"
+            android:label="@string/app_name" />
+        android:label="@string/app_name" />
 
-<!--        <activity android:name=".EntryActivity" />
+        <!--
+            <activity android:name=".EntryActivity" />
         <activity android:name=".EntryConfirmActivity" />
         <activity android:name=".UserActivity" />
         <activity android:name=".UserEditActivity"
                     android:label="@string/app_name">
-        </activity>-->
+        </activity>
+        -->
         <activity
             android:name=".MeasurementHistoryActivity"
-            android:label="@string/app_name">
-        </activity>
+            android:label="@string/app_name" />
+        <activity android:name=".MonitorActivity" />
+        <activity android:name=".MonitorEditActivity"></activity>
     </application>
 
 </manifest>

@@ -18,6 +18,8 @@ import static com.yamada.biton.healthtogether.R.drawable.release_button;
 import static com.yamada.biton.healthtogether.R.drawable.release_button2;
 import static com.yamada.biton.healthtogether.R.drawable.share_button;
 
+//import com.yamada.biton.healthtogether.AsyncTasksPackage.AsyncTaskHttpRequest;
+
 /**
  * Created by 優太 on 2017/07/03.
  */

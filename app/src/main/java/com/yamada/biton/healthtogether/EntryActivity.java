@@ -12,6 +12,9 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
+import com.yamada.biton.healthtogether.AsyncTasksPackage.ConnectHttpUser;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
@@ -19,7 +22,7 @@ import java.io.IOException;
 public class EntryActivity extends AppCompatActivity {
 
     private static final int RESULT_PICK_IMAGEFILE = 1000;
-    String imgURL1 = "URL",mail1 = "mymail",pass1 = "mypass",nick1 = "mynick",height1="myheight",age1="myage";
+    String imgURL1 = "URL",mail1 = "mymail",pass1 = "mypass",repass1 = "mypass",nick1 = "mynick",height1="myheight",age1="myage";
     int mflg,sflg;
     static public Bitmap bmp =null;
 
@@ -50,14 +53,19 @@ public class EntryActivity extends AppCompatActivity {
         SpannableStringBuilder sp3 = (SpannableStringBuilder)pass.getText();
         pass1 = sp3.toString();
 
+        //パスワード
+        EditText repass = (EditText) findViewById(R.id.passRetypeTxt);
+        SpannableStringBuilder sp4 = (SpannableStringBuilder)repass.getText();
+        repass1 = sp4.toString();
+
         //ニックネーム
         EditText nick = (EditText) findViewById(R.id.nickTxt);
-        SpannableStringBuilder sp4 = (SpannableStringBuilder)nick.getText();
-        nick1 = sp4.toString();
+        SpannableStringBuilder sp5 = (SpannableStringBuilder)nick.getText();
+        nick1 = sp5.toString();
 
         //監視者フラグ
         CheckBox monitor = (CheckBox) findViewById(R.id.monitorChck);
-        if(monitor.isChecked() == true){
+        if(monitor.isChecked()){
             // チェックされた状態の時の処理を記述
             mflg = 1;
         } else {
@@ -65,13 +73,43 @@ public class EntryActivity extends AppCompatActivity {
             mflg = 0;
         }
 
-        Intent intent = new Intent(EntryActivity.this, EntryConfirmActivity.class);
-        intent.putExtra("maildata", mail1);
-        intent.putExtra("passdata", pass1);
-        intent.putExtra("nickdata", nick1);
-        intent.putExtra("monitordata", mflg);
-        startActivity(intent);
+        //未入力処理
+        if (!mail1.equals("") && !pass1.equals("") && !repass1.equals("") && !nick1.equals("")) {
 
+            TextView emptyTxt = (TextView) findViewById(R.id.emptyTxt);
+            emptyTxt.setVisibility(View.GONE);
+        }
+
+        //パス一致処理
+        if (pass1.equals(repass1)) {
+
+            TextView checkTxt = (TextView) findViewById(R.id.passCheckTxt);
+            checkTxt.setVisibility(View.GONE);
+        }
+
+            //phpへとデータを送信
+        //ユーザ重複チェック
+        ConnectHttpUser postdata = new ConnectHttpUser();
+        postdata.UserCheck(this, mail1);
+
+        if (mail1.equals("") || pass1.equals("") || repass1.equals("") || nick1.equals("")) {
+
+            TextView emptyTxt = (TextView) findViewById(R.id.emptyTxt);
+            emptyTxt.setVisibility(View.VISIBLE);
+
+        } else if (!pass1.equals(repass1)) {
+
+            TextView checkTxt = (TextView) findViewById(R.id.passCheckTxt);
+            checkTxt.setVisibility(View.VISIBLE);
+
+        }else {
+            Intent intent = new Intent(EntryActivity.this, EntryConfirmActivity.class);
+            intent.putExtra("maildata", mail1);
+            intent.putExtra("passdata", pass1);
+            intent.putExtra("nickdata", nick1);
+            intent.putExtra("monitordata", mflg);
+            startActivity(intent);
+        }
     }
 
     //画像選択後
@@ -89,9 +127,15 @@ public class EntryActivity extends AppCompatActivity {
                     Global global = new Global();
                     global.setbmp(bmp);
 
+                    // bitmapの画像を200×90で作成する
+                    //Bitmap bitmap2 = Bitmap.createScaledBitmap(bmp, 400, 500, false);
+
+                    //imgbtn.setImageBitmap(bitmap2);
+
+                    //imgbtn.setScaleType(ImageButton.ScaleType.CENTER_CROP);
+
                 } catch (IOException e) {
                     e.printStackTrace();
-
                 }
             }
         }
