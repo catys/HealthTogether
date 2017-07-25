@@ -34,40 +34,43 @@ public class StartActivity extends AppCompatActivity {
         }
 
     public void StartClick(View v){
+        try {
 
+            MyOpenHelper helper = new MyOpenHelper(this);
+            SQLiteDatabase db = helper.getReadableDatabase();
 
-        MyOpenHelper helper = new MyOpenHelper(this);
-        SQLiteDatabase db = helper.getReadableDatabase();
+            // queryメソッドの実行例
+            Cursor c = db.query("user", new String[]{"mail", "monitor"}, null,
+                    null, null, null, null);
 
-        // queryメソッドの実行例
-        Cursor c = db.query("user", new String[] { "mail" , "monitor"}, null,
-                null, null, null, null);
+            boolean mov = c.moveToFirst();
 
-        boolean mov = c.moveToFirst();
-
-        //内部DBなかったら登録画面へ遷移
-        if(mov == false){
-            Intent intent = new Intent(this, EntryActivity.class);
-            startActivity(intent);
-        }
-
-        //内部DBがあってユーザか監視者かで遷移
-        if(mov){
-            //測定結果画面遷移
-            if (c.getInt(1) == 0) {
-                Intent intent = new Intent(StartActivity.this, MainActivity.class);
-                startActivity(intent);
-            } else if(c.getInt(1) == 1) {
-                //監視画面遷移
-                Intent intent = new Intent(StartActivity.this, UserActivity.class);
+            //内部DBなかったら登録画面へ遷移
+            if (!mov) {
+                Intent intent = new Intent(this, EntryActivity.class);
                 startActivity(intent);
             }
+
+            //内部DBがあってユーザか監視者かで遷移
+            if (mov) {
+                //測定結果画面遷移
+                if (c.getInt(1) == 0) {
+                    Intent intent = new Intent(StartActivity.this, MainActivity.class);
+                    startActivity(intent);
+                } else if (c.getInt(1) == 1) {
+                    //監視画面遷移
+                    Intent intent = new Intent(StartActivity.this, FriendActivity.class);
+                    startActivity(intent);
+                }
+            }
+
+            //DB切断
+            c.close();
+            db.close();
+        }catch (Exception e){
+            Intent intent = new Intent(StartActivity.this, EntryActivity.class);
+            startActivity(intent);
         }
-
-        //DB切断
-        c.close();
-        db.close();
-
     }
 
     //内部DB削除

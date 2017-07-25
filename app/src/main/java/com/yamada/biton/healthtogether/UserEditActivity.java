@@ -51,7 +51,7 @@ public class UserEditActivity extends AppCompatActivity {
 
         //phpへとデータを送信
         ConnectHttpUser postdata = new ConnectHttpUser();
-        postdata.UserEditSelect(this, mail);
+        postdata.MonitorEditSelect(this, mail);
 
     }
 
@@ -179,7 +179,22 @@ public class UserEditActivity extends AppCompatActivity {
         ConnectHttpUser postdata1 = new ConnectHttpUser();
         postdata1.UserEditCheck(this, mail);
 
-        if (mail.equals("") || pass.equals("") || repass.equals("") || nick.equals("")) {
+        if (!mail.equals("") && !pass.equals("") && !repass.equals("") && !nick.equals("")) {
+
+            TextView emptyTxt = (TextView) findViewById(R.id.emptyTxt);
+            emptyTxt.setVisibility(View.GONE);
+
+        }
+
+        if (pass.equals(repass)) {
+
+            TextView checkTxt = (TextView) findViewById(R.id.passCheckTxt);
+            checkTxt.setVisibility(View.GONE);
+
+        }
+
+
+            if (mail.equals("") || pass.equals("") || repass.equals("") || nick.equals("")) {
 
             TextView emptyTxt = (TextView) findViewById(R.id.emptyTxt);
             emptyTxt.setVisibility(View.VISIBLE);

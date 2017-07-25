@@ -668,7 +668,7 @@ public class ConnectHttpUser extends Activity {
         }
     }
 
-    //
+    //監視者個人表示
     public void MonitorSelect(Activity activity,String mail) {
         mActivity = activity;
 
@@ -1020,6 +1020,292 @@ public class ConnectHttpUser extends Activity {
         }
     }
 
+    //監視者編集画面に表示する
+    public void MonitorEditSelect(Activity activity,String mail) {
+        mActivity = activity;
+
+        // URLを、扱いやすいUri型で組む
+        Uri baseUri = Uri
+                .parse("http://54.92.74.113/inu/UserSelect.php");
+
+        // パラメータの付与
+        Uri uri = baseUri.buildUpon()
+                .appendQueryParameter("mailaddress",mail)
+                .build();
+
+        if (mTask == null) {
+            mTask = new AsyncTask<Uri, Void, String>() {
+                /**
+                 * 通信において発生したエラー
+                 */
+                private Throwable mError = null;
+
+                @Override
+                protected String doInBackground(Uri... params) {
+                    Uri uri = params[0];
+                    sendText("\n通信開始\n");
+
+                    String result = request(uri);
+
+                    return result;
+                }
+
+                private String request(Uri uri ) {
+                    java.net.HttpURLConnection http = null;
+                    InputStream is = null;
+                    String result = null;
+                    try {
+                        // URLにHTTP接続
+                        URL url = new URL(uri.toString());
+                        http = (java.net.HttpURLConnection) url.openConnection();
+
+                        http.setConnectTimeout(3000);//接続タイムアウトを設定する。
+                        http.setReadTimeout(3000);//レスポンスデータ読み取りタイムアウトを設定する。
+
+                        http.setRequestMethod("POST");
+                        http.setDoOutput(true);// POSTによるデータ送信を可能
+                        http.setRequestProperty("User-Agent", "@IT java-tips URLConnection");// ヘッダを設定
+                        http.setRequestProperty("Accept-Language", "ja");// ヘッダを設定
+
+                        http.setDoInput(true);//リクエストのボディ送信を許可する
+                        http.setDoOutput(true);//レスポンスのボディ受信を許可する
+
+                        OutputStream os = http.getOutputStream();//POST用のOutputStreamを取得
+
+                        String postStr = "name=";//POSTするデータ
+                        PrintStream ps = new PrintStream(os);
+                        ps.print(postStr);//データをPOSTする
+                        ps.close();
+                        http.connect();
+                        is = http.getInputStream();
+
+                        result = toString(is);
+                        sendText(result);
+                    } catch (MalformedURLException e) {
+                        Log.e(TAG, "通信失敗", e);
+                        sendText(e.toString());
+                    } catch (IOException e) {
+                        Log.e(TAG, "通信失敗", e);
+                        sendText(e.toString());
+                    } finally {
+                        if (http != null) {
+                            http.disconnect();
+                        }
+                        try {
+                            if (is != null) {
+                                is.close();
+                            }
+                        } catch (IOException e) {
+                            Log.e(TAG, "ストリームのクローズ失敗", e);
+                        }
+                    }
+                    return result;
+                }
+
+                private String toString(InputStream is) throws IOException {
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(is, "UTF-8"));
+                    StringBuilder sb = new StringBuilder();
+                    char[] b = new char[1024];
+                    int line;
+                    while (0 <= (line = reader.read(b))) {
+                        sb.append(b, 0, line);
+                    }
+                    return sb.toString();
+                }
+
+
+                @Override
+                protected void onPostExecute(String result) {
+                    try {
+                        JSONObject json = new JSONObject(result);
+                        // タイトルを取得する場合
+                        JSONObject item = json.getJSONObject("data");
+                        String mail = item.getString("mailaddress");//メールアドレス
+                        String pass = item.getString("password");//パスワード
+                        String nick = item.getString("nickname");//ニックネーム
+                        String profile = item.getString("profileURL");//プロフィール画像
+
+                        //編集画面に表示
+
+                        //プロフィール画像
+                        if(!profile.equals("null")){
+                            ImageButton imageView = (ImageButton)mActivity.findViewById(R.id.monitorditImgBtn);
+
+                            Uri uri = Uri.parse("http://54.92.74.113/prof/" + mail + ".jpg");
+                            Uri.Builder builder = uri.buildUpon();
+                            AsyncTaskHttpRequest task = new AsyncTaskHttpRequest(imageView);
+                            task.execute(builder);
+                        }
+
+                        //メールアドレス
+                        EditText mailTxt1 = (EditText) mActivity.findViewById(R.id.monitorEditMailTxt);
+                        mailTxt1.setText(mail);
+
+                        //パスワード
+                        EditText passTxt1 = (EditText) mActivity.findViewById(R.id.monitorEditPassTxt);
+                        passTxt1.setText(pass);
+
+                        //パスワード再入力
+                        EditText passTxt2 = (EditText) mActivity.findViewById(R.id.monitorEditPassRetypeTxt);
+                        passTxt2.setText(pass);
+
+
+                        //ニックネーム
+                        EditText nickTxt1 = (EditText) mActivity.findViewById(R.id.monitorEditNickTxt);
+                        nickTxt1.setText(nick);
+
+                        mTask = null;
+                    } catch (Exception e) {
+                    }
+
+                }
+
+                @Override
+                protected void onCancelled() {
+                    onCancelled(null);
+                }
+
+                @Override
+                protected void onCancelled(String result) {
+                    sendText("\nonCancelled(String result), result=" + result);
+
+                    mTask = null;
+                }
+            }.execute(uri);
+        } else {
+            // 現在通信のタスクが実行中。重複して実行されないように制御。
+        }
+    }
+
+
+    //個人情報編集
+    public void MonitorUpdate(Activity activity,String beforemail,String mail,String pass,String nick,String proURL) {
+        mActivity = activity;
+
+        // URLを、扱いやすいUri型で組む
+        Uri baseUri = Uri
+                .parse("http://54.92.74.113/inu/UserUpdate.php");
+
+        // パラメータの付与
+        Uri uri = baseUri.buildUpon()
+                .appendQueryParameter("beforemail",beforemail)
+                .appendQueryParameter("mailaddress",mail)
+                .appendQueryParameter("password",pass)
+                .appendQueryParameter("nickname",nick)
+                .appendQueryParameter("profileURL",proURL)
+                .build();
+
+        if (mTask == null) {
+            mTask = new AsyncTask<Uri, Void, String>() {
+                /**
+                 * 通信において発生したエラー
+                 */
+                private Throwable mError = null;
+
+                @Override
+                protected String doInBackground(Uri... params) {
+                    Uri uri = params[0];
+                    sendText("\n通信開始\n");
+
+                    String result = request(uri);
+
+                    return result;
+                }
+
+                private String request(Uri uri ) {
+                    java.net.HttpURLConnection http = null;
+                    InputStream is = null;
+                    String result = null;
+                    try {
+                        // URLにHTTP接続
+                        URL url = new URL(uri.toString());
+                        http = (java.net.HttpURLConnection) url.openConnection();
+
+                        http.setConnectTimeout(3000);//接続タイムアウトを設定する。
+                        http.setReadTimeout(3000);//レスポンスデータ読み取りタイムアウトを設定する。
+
+                        http.setRequestMethod("POST");
+                        http.setDoOutput(true);// POSTによるデータ送信を可能
+                        http.setRequestProperty("User-Agent", "@IT java-tips URLConnection");// ヘッダを設定
+                        http.setRequestProperty("Accept-Language", "ja");// ヘッダを設定
+
+                        http.setDoInput(true);//リクエストのボディ送信を許可する
+                        http.setDoOutput(true);//レスポンスのボディ受信を許可する
+
+                        OutputStream os = http.getOutputStream();//POST用のOutputStreamを取得
+
+                        String postStr = "name=";//POSTするデータ
+                        PrintStream ps = new PrintStream(os);
+                        ps.print(postStr);//データをPOSTする
+                        ps.close();
+                        http.connect();
+                        is = http.getInputStream();
+
+                        result = toString(is);
+                        sendText(result);
+                    } catch (MalformedURLException e) {
+                        Log.e(TAG, "通信失敗", e);
+                        sendText(e.toString());
+                    } catch (IOException e) {
+                        Log.e(TAG, "通信失敗", e);
+                        sendText(e.toString());
+                    } finally {
+                        if (http != null) {
+                            http.disconnect();
+                        }
+                        try {
+                            if (is != null) {
+                                is.close();
+                            }
+                        } catch (IOException e) {
+                            Log.e(TAG, "ストリームのクローズ失敗", e);
+                        }
+                    }
+                    return result;
+                }
+
+                private String toString(InputStream is) throws IOException {
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(is, "UTF-8"));
+                    StringBuilder sb = new StringBuilder();
+                    char[] b = new char[1024];
+                    int line;
+                    while (0 <= (line = reader.read(b))) {
+                        sb.append(b, 0, line);
+                    }
+                    return sb.toString();
+                }
+
+                /*                @Override
+                                protected void onPostExecute(String result) {
+                                    try {
+                                        ImageButton button2 = (ImageButton)mActivity.findViewById(R.id.friendGetButton);
+                                        button2.setImageResource(release_button);
+
+                                        mTask = null;
+                                    } catch (Exception e) {
+                                    }
+
+                                }
+                */
+                @Override
+                protected void onCancelled() {
+                    onCancelled(null);
+                }
+
+                @Override
+                protected void onCancelled(String result) {
+                    sendText("\nonCancelled(String result), result=" + result);
+
+                    mTask = null;
+                }
+            }.execute(uri);
+        } else {
+            // 現在通信のタスクが実行中。重複して実行されないように制御。
+        }
+    }
+
     //個人情報編集
     public void UserUpdate(Activity activity,String beforemail,String mail,String pass,String nick,String proURL,String bw,String bf,String bmi,String vf,String sm,String ba,String bm) {
         mActivity = activity;
@@ -1153,4 +1439,5 @@ public class ConnectHttpUser extends Activity {
             // 現在通信のタスクが実行中。重複して実行されないように制御。
         }
     }
+
 }
